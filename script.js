@@ -128,13 +128,14 @@ document.querySelectorAll('[data-back-to-portfolio]').forEach((button) => {
 document.querySelectorAll('.project-trigger, .project-preview-link').forEach((link) => {
     link.addEventListener('click', (event) => {
         const href = link.getAttribute('href');
+
         if (!href || href === '#' || href === 'javascript:void(0)') {
             event.preventDefault();
             return;
         }
 
-        event.preventDefault();
-        openProjectUrl(href);
+        // Let the browser handle standard new-tab navigation for project links.
+        // The links already include target="_blank" and rel="noopener noreferrer".
     });
 });
 
