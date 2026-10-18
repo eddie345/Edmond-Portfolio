@@ -53,6 +53,32 @@ const modalTagline = document.getElementById('projectModalTagline');
 const modalDescription = document.getElementById('projectModalDescription');
 const modalLink = document.getElementById('projectModalLink');
 
+function openProjectUrl(url) {
+    if (!url || url === '#' || url === 'javascript:void(0)') return;
+
+    try {
+        const normalizedUrl = new URL(url, window.location.href).toString();
+        const popup = window.open('', '_blank', 'noopener,noreferrer');
+
+        if (popup) {
+            popup.opener = null;
+            popup.location.href = normalizedUrl;
+            return;
+        }
+
+        const tempLink = document.createElement('a');
+        tempLink.href = normalizedUrl;
+        tempLink.target = '_blank';
+        tempLink.rel = 'noopener noreferrer';
+        tempLink.style.display = 'none';
+        document.body.appendChild(tempLink);
+        tempLink.click();
+        tempLink.remove();
+    } catch (error) {
+        console.warn('Invalid project URL:', url, error);
+    }
+}
+
 function openProjectModal(card) {
     if (!modal || !card) return;
 
@@ -69,15 +95,8 @@ function openProjectModal(card) {
     modalImage.alt = `${title} preview`;
     modalLink.href = link;
 
-    const isLocalProjectLink = link && link !== '#' && !/^https?:\/\//i.test(link) && !link.startsWith('mailto:');
-
-    if (link === '#' || isLocalProjectLink) {
-        modalLink.setAttribute('target', '_self');
-        modalLink.setAttribute('rel', '');
-    } else {
-        modalLink.setAttribute('target', '_blank');
-        modalLink.setAttribute('rel', 'noreferrer');
-    }
+    modalLink.setAttribute('target', '_blank');
+    modalLink.setAttribute('rel', 'noreferrer');
 
     modal.classList.add('is-open');
     modal.setAttribute('aria-hidden', 'false');
@@ -92,24 +111,31 @@ function closeProjectModal() {
     document.body.classList.remove('modal-open');
 }
 
-document.querySelectorAll('.project-trigger').forEach((button) => {
-    button.addEventListener('click', (event) => {
-        event.preventDefault();
-        const card = button.closest('.project-card');
-        openProjectModal(card);
-    });
-});
-
-document.querySelectorAll('.project-preview-link').forEach((link) => {
-    link.addEventListener('click', (event) => {
-        event.preventDefault();
-        const card = link.closest('.project-card');
-        openProjectModal(card);
-    });
-});
-
 document.querySelectorAll('[data-close-modal]').forEach((element) => {
     element.addEventListener('click', closeProjectModal);
+});
+
+document.querySelectorAll('[data-back-to-portfolio]').forEach((button) => {
+    button.addEventListener('click', () => {
+        closeProjectModal();
+        const workSection = document.getElementById('work');
+        if (workSection) {
+            workSection.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        }
+    });
+});
+
+document.querySelectorAll('.project-trigger, .project-preview-link').forEach((link) => {
+    link.addEventListener('click', (event) => {
+        const href = link.getAttribute('href');
+        if (!href || href === '#' || href === 'javascript:void(0)') {
+            event.preventDefault();
+            return;
+        }
+
+        event.preventDefault();
+        openProjectUrl(href);
+    });
 });
 
 document.addEventListener('keydown', (event) => {
@@ -117,3 +143,25 @@ document.addEventListener('keydown', (event) => {
         closeProjectModal();
     }
 });
+
+const backToTopButton = document.querySelector('.back-to-top');
+
+if (backToTopButton) {
+    const toggleBackToTopButton = () => {
+        if (window.scrollY > 300) {
+            backToTopButton.classList.add('visible');
+        } else {
+            backToTopButton.classList.remove('visible');
+        }
+    };
+
+    toggleBackToTopButton();
+    window.addEventListener('scroll', toggleBackToTopButton, { passive: true });
+
+    backToTopButton.addEventListener('click', () => {
+        window.scrollTo({
+            top: 0,
+            behavior: 'smooth'
+        });
+    });
+}
