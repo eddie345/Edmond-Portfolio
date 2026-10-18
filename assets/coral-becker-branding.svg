@@ -1,0 +1,47 @@
+<svg width="1200" height="1200" viewBox="0 0 1200 1200" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <rect width="1200" height="1200" fill="#0E2136"/>
+
+  <g>
+    <rect x="0" y="0" width="400" height="400" fill="#0B2038"/>
+    <rect x="400" y="0" width="400" height="400" fill="#F28B1D"/>
+    <rect x="800" y="0" width="400" height="400" fill="#0D253E"/>
+
+    <rect x="0" y="400" width="400" height="400" fill="#F28B1D"/>
+    <rect x="400" y="400" width="400" height="400" fill="#0D243E"/>
+    <rect x="800" y="400" width="400" height="400" fill="#F28B1D"/>
+
+    <rect x="0" y="800" width="400" height="400" fill="#F28B1D"/>
+    <rect x="400" y="800" width="400" height="400" fill="#0D243E"/>
+    <rect x="800" y="800" width="400" height="400" fill="#F28B1D"/>
+  </g>
+
+  <g>
+    <g transform="translate(5,70)">
+      <text x="40" y="160" fill="#F28B1D" font-family="Arial, Helvetica, sans-serif" font-size="220" font-weight="800" letter-spacing="-12">C</text>
+      <text x="180" y="160" fill="#F28B1D" font-family="Arial, Helvetica, sans-serif" font-size="220" font-weight="800" letter-spacing="-12">B</text>
+      <text x="110" y="280" fill="#F28B1D" font-family="Arial, Helvetica, sans-serif" font-size="88" font-weight="800" letter-spacing="-2">Coral Becker</text>
+    </g>
+
+    <g transform="translate(470,95)">
+      <path d="M118 2C40 2 13 56 13 136V189C13 266 43 316 122 316C198 316 230 274 235 223H149C145 245 137 257 118 257C92 257 81 242 81 208V119C81 85 90 70 119 70C137 70 146 81 150 100H236C230 51 197 2 118 2Z" fill="#0B213A"/>
+      <path d="M248 2H351C324 117 336 177 374 248L376 307H264L252 263H161C169 235 177 202 189 158C207 97 226 45 248 2Z" fill="#0B213A"/>
+      <path d="M381 154H451C442 106 424 79 398 73C382 69 370 73 359 84L340 102L301 72C319 34 356 13 405 13C472 13 512 49 526 115L551 42H631V314H541L534 235H525C510 281 469 312 415 312C350 312 302 279 278 235L310 209C331 242 364 260 405 260C448 260 477 242 493 198H381V154Z" fill="#0B213A"/>
+      <path d="M652 41H778V157H652H652V41ZM652 191H778V314H652V191Z" fill="#0B213A"/>
+      <path d="M794 314V117H862C911 117 945 145 960 195C974 241 962 277 927 302C886 333 832 332 794 314ZM859 179H838V253H859C885 253 899 241 899 215C899 189 885 179 859 179Z" fill="#0B213A"/>
+      <path d="M987 5C1022 5 1059 24 1092 63L1140 9L1215 9V312H1120V127L1080 162L1058 131L1111 79C1081 62 1034 59 987 78V5Z" fill="#0B213A"/>
+      <path d="M75 371L115 371L170 446H214L152 370L210 303L171 303L115 371H75Z" fill="#F8F8F8"/>
+      <path d="M273 336C309 307 347 302 386 301C434 300 472 315 500 345C527 374 540 408 536 448C532 487 515 519 480 545C443 573 404 585 356 582C326 580 292 566 264 541L284 496C307 521 333 533 378 535C418 537 450 523 471 497C490 471 491 443 471 417C452 392 422 380 382 380C340 380 311 389 286 410L273 336Z" fill="#F8F8F8"/>
+      <path d="M521 303H632V422H521V303ZM522 471H630V584H522V471Z" fill="#F8F8F8"/>
+      <path d="M766 374C744 332 705 302 650 286L692 218C734 232 769 258 795 295L766 374Z" fill="#F8F8F8"/>
+      <path d="M851 273C880 251 916 244 957 248C997 252 1038 270 1079 302L1018 366C996 343 974 330 949 327C923 324 899 336 877 362L851 273Z" fill="#F8F8F8"/>
+      <path d="M618 513C654 511 710 521 746 541C781 560 803 592 814 638C828 689 821 730 795 757C768 785 724 796 672 791C615 786 567 758 537 714L594 673C614 697 644 710 681 712C714 714 739 704 755 682C771 659 772 631 754 611C736 590 704 583 658 583H618V513Z" fill="#F8F8F8"/>
+      <text x="770" y="640" fill="#0B213A" font-family="Arial, Helvetica, sans-serif" font-size="118" font-weight="800" letter-spacing="-6">Coral Becker</text>
+    </g>
+
+    <g transform="translate(820,760)">
+      <rect x="0" y="0" width="230" height="130" rx="12" fill="#0B2038"/>
+      <text x="22" y="85" fill="#F28B1D" font-family="Arial, Helvetica, sans-serif" font-size="70" font-weight="800">CB</text>
+      <text x="148" y="86" fill="#F8F8F8" font-family="Arial, Helvetica, sans-serif" font-size="34" font-weight="700">Coral Becker</text>
+    </g>
+  </g>
+</svg>

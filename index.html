@@ -1,0 +1,464 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Edmond | Freelance UI/UX Designer & Frontend Developer</title>
+    <meta name="description"
+        content="Freelance UI/UX designer and frontend developer crafting fast, clean, accessible digital products." />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+        href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&family=Playfair+Display:wght@600;700&display=swap"
+        rel="stylesheet" />
+    <link rel="stylesheet" href="style.css" />
+</head>
+
+<body>
+    <header class="site-header">
+        <div class="container nav-wrap">
+            <a href="#hero" class="brand" aria-label="Edmond home">Edmond</a>
+
+            <button class="nav-toggle" aria-label="Toggle navigation" aria-expanded="false">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+
+            <nav class="main-nav" aria-label="Main navigation">
+                <a href="#services">Services</a>
+                <a href="#work">Work</a>
+                <a href="#about">About</a>
+                <a href="#reviews">Reviews</a>
+                <a href="#blog">Blog</a>
+                <a href="#contact" class="nav-cta">Hire me</a>
+            </nav>
+        </div>
+    </header>
+
+    <main>
+        <section class="hero" id="hero">
+            <div class="container hero-grid">
+                <div class="hero-copy">
+                    <p class="eyebrow">Available for work</p>
+                    <h1>
+                        Hi, I’m <span>Edmond</span>
+                    </h1>
+                    <p class="lead">
+                        Freelance UI/UX Designer &amp; Frontend Developer. I design and build digital products
+                        that people love to use — fast, clean, and accessible.
+                    </p>
+
+                    <div class="hero-actions">
+                        <a href="#work" class="button primary">View my work</a>
+                        <a href="#contact" class="button secondary">Get in touch</a>
+                    </div>
+
+                    <ul class="stats" aria-label="Highlights">
+                        <li>
+                            <strong>15+</strong>
+                            <span>Projects done</span>
+                        </li>
+                        <li>
+                            <strong>11+</strong>
+                            <span>Happy clients</span>
+                        </li>
+                        <li>
+                            <strong>2y</strong>
+                            <span>Experience</span>
+                        </li>
+                    </ul>
+                </div>
+
+                <div class="hero-visual">
+                    <div class="portrait-frame">
+                        <img src="assets/edmond-portrait.jpg" alt="Portrait of Edmond" />
+                    </div>
+                    <div class="floating-card card-one">
+                        <strong>Open to Projects</strong>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="section services" id="services">
+            <div class="container">
+                <div class="section-heading">
+                    <p class="eyebrow">What I do</p>
+                    <h2>Services</h2>
+                </div>
+
+                <div class="service-grid">
+                    <article class="service-card">
+                        <span class="service-index">01</span>
+                        <h3>UI/UX Design</h3>
+                        <p>
+                            From wireframes to polished Figma prototypes. Intuitive, visually compelling
+                            interfaces that convert visitors into users and put usability first.
+                        </p>
+                    </article>
+
+                    <article class="service-card">
+                        <span class="service-index">02</span>
+                        <h3>Frontend Dev</h3>
+                        <p>
+                            Production-grade code with Tailwind CSS and Alpine.js. Pixel-perfect, fully
+                            responsive, SEO-friendly and blazing fast — no bloat, no heavy frameworks.
+                        </p>
+                    </article>
+
+                    <article class="service-card">
+                        <span class="service-index">03</span>
+                        <h3>Landing Pages</h3>
+                        <p>
+                            High-converting pages for SaaS, apps and personal brands. Designed to communicate
+                            value instantly and drive action from the first scroll.
+                        </p>
+                    </article>
+                </div>
+            </div>
+        </section>
+
+        <section class="section work" id="work">
+            <div class="container">
+                <div class="section-heading row-between">
+                    <div>
+                        <p class="eyebrow">Portfolio</p>
+                        <h2>Some of my personal work</h2>
+                    </div>
+                    <a href="#contact" class="text-link">More work →</a>
+                </div>
+
+                <div class="project-list">
+                    <article class="project-card" data-title="Waste System"
+                        data-tagline="UI/UX • Dashboard • Operations" data-image="assets/waste-management-system.png"
+                        data-description="A smart waste monitoring dashboard designed to help teams track bin status, fill levels, operational issues, and service alerts in one clear view."
+                        data-link="https://claude.ai/artifact/6Y4MmDa3pwzGHB9NFhi9x4">
+                        <a href="#" class="project-preview-link" aria-label="Open Waste System project details">
+                            <img src="assets/waste-management-system.png" alt="Waste Management System project" />
+                        </a>
+                        <div class="project-info">
+                            <div class="project-meta">
+                                <span>UI/UX</span>
+                                <span>Dashboard</span>
+                                <span>Operations</span>
+                            </div>
+                            <h3>Waste System</h3>
+                            <p>Smart waste monitoring dashboard for operations and service tracking.</p>
+                            <button type="button" class="text-link project-trigger">Open project →</button>
+                        </div>
+                    </article>
+
+                    <article class="project-card" data-title="Coral Becker Brand"
+                        data-tagline="Branding • Packaging • Product Identity" data-image="assets/brand.jpg"
+                        data-description="A product branding and packaging identity built around a bold orange-and-navy visual system, with a strong monogram and cohesive mockup presentation for a premium modern brand."
+                        data-link="coral-becker-gallery.html">
+                        <a href="#" class="project-preview-link" aria-label="Open Coral Becker brand project details">
+                            <img src="assets/brand.jpg" alt="Coral Becker product branding mockup" />
+                        </a>
+                        <div class="project-info">
+                            <div class="project-meta">
+                                <span>Branding</span>
+                                <span>Packaging</span>
+                                <span>Identity</span>
+                            </div>
+                            <h3>Coral Becker</h3>
+                            <p>Premium product branding and packaging identity with a confident orange-and-navy system.
+                            </p>
+                            <button type="button" class="text-link project-trigger">Open project →</button>
+                        </div>
+                    </article>
+
+                    <article class="project-card" data-title="Rosie Consult"
+                        data-tagline="Web • Development • Migration"
+                        data-image="https://rosieconsult.com.au/images/Sydney-Opera-house-2.webp"
+                        data-description="A migration consultancy website created to simplify complex visa information into a credible, easy-to-navigate experience for potential clients."
+                        data-link="https://rosieconsult.com.au/">
+                        <a href="#" class="project-preview-link" aria-label="Open Rosie Consult project details">
+                            <img src="https://rosieconsult.com.au/images/Sydney-Opera-house-2.webp"
+                                alt="Rosie Consult migration consultancy website preview" />
+                        </a>
+                        <div class="project-info">
+                            <div class="project-meta">
+                                <span>Web</span>
+                                <span>Development</span>
+                                <span>Migration</span>
+                            </div>
+                            <h3>Rosie Consult</h3>
+                            <p>Migration consultancy website designed for trust, clarity and lead generation.</p>
+                            <button type="button" class="text-link project-trigger">Preview website →</button>
+                        </div>
+                    </article>
+
+                    <article class="project-card" data-title="Poultry Farm System"
+                        data-tagline="Dashboard • Farm • Operations" data-image="assets/poultry-farm-system.svg"
+                        data-description="A poultry farm management system built to help track flock health, egg production, feed usage, mortality, and daily operational insights in one place."
+                        data-link="https://claude.ai/artifact/GzeYxgqLsHbBaViFKF3rYb">
+                        <a href="#" class="project-preview-link" aria-label="Open Poultry Farm System project details">
+                            <img src="assets/poultry-farm-system.svg"
+                                alt="Poultry Farm management system dashboard preview" />
+                        </a>
+                        <div class="project-info">
+                            <div class="project-meta">
+                                <span>UI/UX</span>
+                                <span>Farm</span>
+                                <span>System</span>
+                            </div>
+                            <h3>Poultry Farm</h3>
+                            <p>Operational dashboard for poultry monitoring, production tracking and farm insights.</p>
+                            <button type="button" class="text-link project-trigger">Open project →</button>
+                        </div>
+                    </article>
+                </div>
+            </div>
+        </section>
+
+        <section class="section about" id="about">
+            <div class="container about-grid">
+                <div class="about-photo-wrap">
+                    <img src="assets/about-edmond.jpg" alt="Edmond portrait" />
+                </div>
+
+                <div class="about-copy">
+                    <p class="eyebrow">About me</p>
+                    <h2>A bit about who I am</h2>
+                    <p>
+                        I’m Edmond, a freelance designer and frontend developer based in Ghana with 2 years
+                        of experience shipping digital products for startups, agencies, and scale-ups across
+                        Africa and beyond. I thrive at the intersection of great design and clean code.
+                    </p>
+                    <p>
+                        I believe great interfaces are invisible — they get out of the user’s way. My work is
+                        fast, accessible and built to last. When I’m not coding, you’ll find me hiking or
+                        hunting for a good espresso.
+                    </p>
+
+                    <div class="tools-box">
+                        <h3>Stack &amp; tools</h3>
+                        <ul class="tool-list">
+                            <li>Tailwind CSS</li>
+
+                            <li>Figma</li>
+                            <li>HTML / CSS</li>
+                            <li>JavaScript</li>
+                            <li>Photoshop</li>
+                            <li>wordpress</li>
+                            <li>Webflow</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="section reviews" id="reviews">
+            <div class="container">
+                <div class="section-heading">
+                    <p class="eyebrow">Social proof</p>
+                    <h2>What clients say</h2>
+                </div>
+
+                <div class="review-grid">
+                    <article class="review-card">
+                        <blockquote>
+                            “Edmond delivered our redesign in record time and the quality blew us away. Our
+                            conversion rate jumped 28% in the first month. Absolutely recommend.”
+                        </blockquote>
+                        <div class="review-person">
+                            <img src="../Folder/IMG_0417.PNG" alt="Client portrait" />
+                            <div>
+                                <strong>Emmanuel</strong>
+                                <span>Client</span>
+                            </div>
+                        </div>
+                    </article>
+
+                    <article class="review-card">
+                        <blockquote>
+                            “Working with Edmond is a dream. He asks the right questions, moves fast, and the
+                            final result always exceeds what we imagined. Our best hire of 2024.”
+                        </blockquote>
+                        <div class="review-person">
+                            <img src="../Folder/IMG_0642.PNG" alt="Client portrait" />
+                            <div>
+                                <strong>Bless</strong>
+                                <span>Client</span>
+                            </div>
+                        </div>
+                    </article>
+
+                    <article class="review-card">
+                        <blockquote>
+                            “We had a tight deadline and a vague brief. Edmond turned both into a polished site
+                            in under two weeks. Clean code, zero hand-holding needed.”
+                        </blockquote>
+                        <div class="review-person">
+                            <img src="../Folder/IMG_0659.JPG" alt="Client portrait" />
+                            <div>
+                                <strong>Justice</strong>
+                                <span>Client</span>
+                            </div>
+                        </div>
+                    </article>
+                </div>
+            </div>
+        </section>
+
+        <section class="section blog" id="blog">
+            <div class="container">
+                <div class="section-heading row-between">
+                    <div>
+                        <p class="eyebrow">Thoughts</p>
+                        <h2>From the blog</h2>
+                    </div>
+                    <a href="#contact" class="text-link">All articles →</a>
+                </div>
+
+                <div class="blog-grid">
+                    <article class="blog-card">
+                        <img src="https://images.unsplash.com/photo-1555066931-4365d14bab8c?w=700&q=80"
+                            alt="Why I ditched CSS frameworks" />
+                        <div class="blog-body">
+                            <div class="blog-meta">
+                                <span>Design</span>
+                                <span>Mar 8, 2025</span>
+                            </div>
+                            <h3>Why I ditched heavy CSS frameworks for Tailwind</h3>
+                            <p>
+                                After years of fighting specificity wars, here’s what finally convinced me to make
+                                the switch.
+                            </p>
+                            <a href="#contact" class="text-link">Read more →</a>
+                        </div>
+                    </article>
+
+                    <article class="blog-card">
+                        <img src="https://images.unsplash.com/photo-1581291518633-83b4ebd1d83e?w=700&q=80"
+                            alt="Design systems" />
+                        <div class="blog-body">
+                            <div class="blog-meta">
+                                <span>Dev</span>
+                                <span>Feb 21, 2025</span>
+                            </div>
+                            <h3>Building a design system from scratch in a weekend</h3>
+                            <p>
+                                Tokens, components, docs — the process I follow to spin up a coherent system in 48
+                                hours.
+                            </p>
+                            <a href="#contact" class="text-link">Read more →</a>
+                        </div>
+                    </article>
+
+                    <article class="blog-card">
+                        <img src="https://images.unsplash.com/photo-1498050108023-c5249f4df085?w=700&q=80"
+                            alt="Freelance lessons" />
+                        <div class="blog-body">
+                            <div class="blog-meta">
+                                <span>Freelance</span>
+                                <span>Jan 14, 2025</span>
+                            </div>
+                            <h3>5 lessons from my first year of full-time freelancing</h3>
+                            <p>
+                                Contracts, pricing, scope creep — the things nobody tells you before you go solo.
+                            </p>
+                            <a href="#contact" class="text-link">Read more →</a>
+                        </div>
+                    </article>
+                </div>
+            </div>
+        </section>
+
+        <section class="section contact" id="contact">
+            <div class="container contact-grid">
+                <div class="contact-copy">
+                    <p class="eyebrow">Get in touch</p>
+                    <h2>Let’s work together</h2>
+                    <p>
+                        I’m open to UI/UX and frontend missions, short or long-term. Landing page, full
+                        product redesign, or just a second pair of eyes — let’s talk.
+                    </p>
+
+                    <ul class="contact-list">
+                        <li><a href="https://mail.google.com/mail/?view=cm&fs=1&to=edmondkorley5@gmail.com"
+                                target="_blank" rel="noreferrer">edmondkorley5@gmail.com</a></li>
+                        <li><a href="https://wa.me/233500886680" target="_blank" rel="noreferrer">0500886680</a></li>
+                        <li><a href="https://linkedin.com/in/edmond-dev" target="_blank"
+                                rel="noreferrer">linkedin.com/in/edmond-dev</a></li>
+                    </ul>
+                </div>
+
+                <form class="contact-form">
+                    <div class="field-row">
+                        <label>
+                            <span>Name</span>
+                            <input type="text" name="name" placeholder="Your name" />
+                        </label>
+                        <label>
+                            <span>Email</span>
+                            <input type="email" name="email" placeholder="Your email" />
+                        </label>
+                    </div>
+
+                    <label>
+                        <span>Subject</span>
+                        <input type="text" name="subject" placeholder="Project topic" />
+                    </label>
+
+                    <label>
+                        <span>Message</span>
+                        <textarea name="message" rows="5" placeholder="Tell me more about your project"></textarea>
+                    </label>
+
+                    <button type="submit" class="button primary">Send message</button>
+                </form>
+            </div>
+        </section>
+    </main>
+
+    <footer class="site-footer">
+        <div class="container footer-wrap">
+            <div>
+                <p class="footer-brand">© 2026 Edmond. All rights reserved.</p>
+            </div>
+
+            <div class="footer-links">
+                <a href="#hero">edmond</a>
+                <a href="#services">Services</a>
+                <a href="#work">Work</a>
+                <a href="#about">About</a>
+                <a href="#reviews">Reviews</a>
+                <a href="#blog">Blog</a>
+                <a href="#contact">Hire me</a>
+            </div>
+        </div>
+    </footer>
+
+    <div class="project-modal" id="projectModal" aria-hidden="true">
+        <div class="project-modal__backdrop" data-close-modal></div>
+        <div class="project-modal__panel" role="dialog" aria-modal="true" aria-labelledby="projectModalTitle">
+            <button type="button" class="project-modal__close" aria-label="Close project details">×</button>
+            <div class="project-modal__hero">
+                <img id="projectModalImage" src="" alt="Project preview" />
+            </div>
+            <div class="project-modal__content">
+                <div class="project-modal__eyebrow" id="projectModalTagline">Selected work</div>
+                <h3 id="projectModalTitle">Project title</h3>
+                <p id="projectModalDescription">Project description</p>
+                <ul class="project-modal__features">
+                    <li>Responsive design</li>
+                    <li>Clear user journey</li>
+                    <li>Conversion-focused UX</li>
+                </ul>
+                <div class="project-modal__actions">
+                    <a id="projectModalLink" href="#" target="_blank" rel="noreferrer" class="button primary">Open live
+                        project</a>
+                    <button type="button" class="button secondary" data-close-modal>Close</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+
+</html>

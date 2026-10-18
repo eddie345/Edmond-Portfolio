@@ -1,0 +1,84 @@
+<svg width="1200" height="800" viewBox="0 0 1200 800" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <rect width="1200" height="800" fill="#0F0A1F"/>
+
+  <rect x="0" y="0" width="1200" height="78" fill="#1A132D"/>
+  <rect x="0" y="78" width="1200" height="2" fill="#312B49"/>
+
+  <g opacity="0.95">
+    <rect x="36" y="18" width="128" height="38" rx="12" fill="#9B84E8"/>
+    <circle cx="68" cy="37" r="10" fill="#F4D7FF"/>
+    <path d="M66 34.5C68.5 33.5 70.5 33 72.8 33C79.2 33 84 37.8 84 44V44.2H58V43.5C58 37.8 62.8 33 69.2 33C71 33 72.8 33.3 74.4 34.1L72.5 35.7L66 34.5Z" fill="#9B84E8"/>
+    <path d="M66 44H82V46.5C82 51.1 78.1 55 73.5 55H58.5C53.9 55 50 51.1 50 46.5V44H66Z" fill="#E9D9FF" opacity="0.9"/>
+    <text x="92" y="44" fill="#F5F3FF" font-family="Arial, sans-serif" font-size="22" font-weight="700">Pes ez Farm</text>
+  </g>
+
+  <g fill="#DCCCEF" font-family="Arial, sans-serif" font-size="22" font-weight="700">
+    <text x="250" y="47">Dashboard</text>
+    <text x="430" y="47">Flocks</text>
+    <text x="560" y="47">Eggs</text>
+    <text x="685" y="47">Feed</text>
+    <text x="820" y="47">Mortality</text>
+    <text x="990" y="47">Health</text>
+    <text x="1090" y="47">Reports</text>
+    <text x="1194" y="47">Users</text>
+  </g>
+
+  <text x="1015" y="47" fill="#F1E8FF" font-family="Arial, sans-serif" font-size="22" font-weight="600">Logout (admin)</text>
+
+  <g>
+    <text x="80" y="170" fill="#F5F3FF" font-family="Arial, sans-serif" font-size="56" font-weight="800">Dashboard</text>
+
+    <rect x="80" y="220" width="250" height="140" rx="18" fill="#1D1930" stroke="#4D456B"/>
+    <text x="112" y="278" fill="#C8B7ED" font-family="Arial, sans-serif" font-size="20" font-weight="700" letter-spacing="2">ACTIVE BIRDS</text>
+    <text x="112" y="332" fill="#F2F2F8" font-family="Arial, sans-serif" font-size="62" font-weight="700">2500</text>
+
+    <rect x="370" y="220" width="250" height="140" rx="18" fill="#1D1930" stroke="#4D456B"/>
+    <text x="404" y="278" fill="#C8B7ED" font-family="Arial, sans-serif" font-size="20" font-weight="700" letter-spacing="2">EGGS TODAY</text>
+    <text x="404" y="332" fill="#F2F2F8" font-family="Arial, sans-serif" font-size="62" font-weight="700">0</text>
+
+    <rect x="660" y="220" width="250" height="140" rx="18" fill="#1D1930" stroke="#4D456B"/>
+    <text x="692" y="278" fill="#C8B7ED" font-family="Arial, sans-serif" font-size="20" font-weight="700" letter-spacing="2">FEED IN STOCK (KG)</text>
+    <text x="692" y="332" fill="#F2F2F8" font-family="Arial, sans-serif" font-size="62" font-weight="700">0</text>
+
+    <rect x="950" y="220" width="250" height="140" rx="18" fill="#1D1930" stroke="#4D456B"/>
+    <text x="982" y="278" fill="#C8B7ED" font-family="Arial, sans-serif" font-size="20" font-weight="700" letter-spacing="2">MORTALITY TODAY</text>
+    <text x="982" y="332" fill="#F2F2F8" font-family="Arial, sans-serif" font-size="62" font-weight="700">0</text>
+  </g>
+
+  <g>
+    <rect x="80" y="420" width="1120" height="250" rx="18" fill="#1D1930" stroke="#4D456B"/>
+    <text x="112" y="470" fill="#F5F3FF" font-family="Arial, sans-serif" font-size="34" font-weight="700">Good eggs — last 7 days</text>
+
+    <rect x="132" y="552" width="106" height="44" fill="#201C30"/>
+    <text x="145" y="560" fill="#D8C7FA" font-family="Arial, sans-serif" font-size="20" font-weight="600">0</text>
+    <text x="135" y="610" fill="#D8C7FA" font-family="Arial, sans-serif" font-size="22" font-weight="600">10-11</text>
+
+    <rect x="275" y="558" width="106" height="38" fill="#201C30"/>
+    <text x="288" y="566" fill="#D8C7FA" font-family="Arial, sans-serif" font-size="20" font-weight="600">0</text>
+    <text x="279" y="610" fill="#D8C7FA" font-family="Arial, sans-serif" font-size="22" font-weight="600">10-12</text>
+
+    <rect x="418" y="565" width="106" height="31" fill="#201C30"/>
+    <text x="431" y="572" fill="#D8C7FA" font-family="Arial, sans-serif" font-size="20" font-weight="600">0</text>
+    <text x="421" y="610" fill="#D8C7FA" font-family="Arial, sans-serif" font-size="22" font-weight="600">10-13</text>
+
+    <rect x="561" y="558" width="106" height="38" fill="#201C30"/>
+    <text x="574" y="566" fill="#D8C7FA" font-family="Arial, sans-serif" font-size="20" font-weight="600">0</text>
+    <text x="565" y="610" fill="#D8C7FA" font-family="Arial, sans-serif" font-size="22" font-weight="600">10-14</text>
+
+    <rect x="704" y="500" width="110" height="96" fill="#C8B6F8"/>
+    <text x="728" y="496" fill="#D8C7FA" font-family="Arial, sans-serif" font-size="20" font-weight="600">300</text>
+    <text x="715" y="610" fill="#D8C7FA" font-family="Arial, sans-serif" font-size="22" font-weight="600">10-15</text>
+
+    <rect x="847" y="540" width="106" height="56" fill="#201C30"/>
+    <text x="860" y="548" fill="#D8C7FA" font-family="Arial, sans-serif" font-size="20" font-weight="600">0</text>
+    <text x="848" y="610" fill="#D8C7FA" font-family="Arial, sans-serif" font-size="22" font-weight="600">10-16</text>
+
+    <rect x="990" y="550" width="106" height="46" fill="#201C30"/>
+    <text x="1003" y="558" fill="#D8C7FA" font-family="Arial, sans-serif" font-size="20" font-weight="600">0</text>
+    <text x="995" y="610" fill="#D8C7FA" font-family="Arial, sans-serif" font-size="22" font-weight="600">10-17</text>
+
+    <path d="M112 617H1068" stroke="#7D6EB5" stroke-width="3"/>
+  </g>
+
+  <text x="80" y="720" fill="#D8C7FA" font-family="Arial, sans-serif" font-size="22" font-weight="500">Data is stored in this browser only.</text>
+</svg>
