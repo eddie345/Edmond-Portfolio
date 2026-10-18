@@ -18,6 +18,7 @@
 
 html {
     scroll-behavior: smooth;
+    overflow-x: hidden;
 }
 
 body {
@@ -26,6 +27,7 @@ body {
     background: radial-gradient(circle at top, #161b20 0%, var(--bg) 35%, #0b0d10 100%);
     color: var(--text);
     line-height: 1.6;
+    overflow-x: hidden;
 }
 
 a {
@@ -332,6 +334,8 @@ p {
     display: flex;
     justify-content: center;
     align-items: center;
+    max-width: 100%;
+    overflow: hidden;
 }
 
 .portrait-frame {
@@ -902,6 +906,370 @@ body.modal-open {
     flex-wrap: wrap;
 }
 
+.eco-custom-actions {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    flex-wrap: wrap;
+    padding: 1.25rem 1.5rem 1.5rem;
+    background: rgba(11, 18, 20, 0.8);
+    border-top: 1px solid rgba(255, 255, 255, 0.06);
+}
+
+.project-modal__custom {
+    display: block;
+    width: 100%;
+    background: #031d1e;
+}
+
+.project-modal__custom[hidden] {
+    display: none;
+}
+
+.project-modal__custom--waste {
+    background: linear-gradient(180deg, #021d1d 0%, #061d1d 100%);
+    min-height: 600px;
+}
+
+.eco-shell {
+    display: grid;
+    grid-template-columns: 260px minmax(0, 1fr);
+    min-height: 640px;
+    background: #061c1a;
+    color: #edf6f4;
+}
+
+.eco-sidebar {
+    background: rgba(7, 24, 25, 0.95);
+    border-right: 1px solid rgba(255, 255, 255, 0.06);
+    padding: 1.2rem 0.9rem 1rem;
+    display: flex;
+    flex-direction: column;
+}
+
+.eco-brand-row {
+    display: flex;
+    align-items: center;
+    gap: 0.8rem;
+    padding: 0.5rem 0 1rem;
+    margin-bottom: 0.5rem;
+}
+
+.eco-brand-mark {
+    width: 28px;
+    height: 28px;
+    border-radius: 50%;
+    background: linear-gradient(135deg, #7ce7d0, #5cc4a4);
+    color: #053730;
+    display: grid;
+    place-items: center;
+    font-size: 1.2rem;
+    font-weight: 700;
+}
+
+.eco-brand-title {
+    font-size: 1.05rem;
+    font-weight: 800;
+    letter-spacing: -0.02em;
+}
+
+.eco-brand-subtitle {
+    font-size: 0.76rem;
+    color: rgba(237, 246, 244, 0.7);
+}
+
+.eco-nav {
+    display: grid;
+    gap: 0.35rem;
+    margin-top: 0.6rem;
+}
+
+.eco-nav-item {
+    border: none;
+    background: transparent;
+    color: rgba(237, 246, 244, 0.82);
+    padding: 0.9rem 0.8rem;
+    border-radius: 12px;
+    text-align: left;
+    font-size: 1rem;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 0.5rem;
+    font-family: inherit;
+}
+
+.eco-nav-item.active {
+    background: rgba(29, 138, 126, 0.22);
+    color: #f2f7f7;
+}
+
+.alert-badge {
+    min-width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    background: #ff6a6a;
+    color: white;
+    font-size: 0.7rem;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    margin-left: auto;
+}
+
+.eco-user-row {
+    margin-top: auto;
+    padding: 1rem 0.5rem 0.2rem;
+    color: rgba(237, 246, 244, 0.78);
+    font-size: 0.92rem;
+}
+
+.eco-logout {
+    border: none;
+    background: transparent;
+    color: rgba(237, 246, 244, 0.78);
+    text-align: left;
+    padding: 0.6rem 0.5rem 0.2rem;
+    font-family: inherit;
+    font-size: 0.96rem;
+    cursor: pointer;
+}
+
+.eco-main {
+    display: flex;
+    flex-direction: column;
+    min-width: 0;
+}
+
+.eco-topbar {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1rem;
+    min-height: 72px;
+    padding: 0.8rem 1.25rem 0.8rem 1.4rem;
+    background: rgba(7, 17, 21, 0.72);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+}
+
+.eco-topbar-title {
+    font-size: 1.4rem;
+    font-weight: 700;
+    color: #edf6f4;
+    letter-spacing: -0.03em;
+}
+
+.eco-topbar-actions {
+    display: flex;
+    align-items: center;
+    gap: 0.65rem;
+    flex-wrap: wrap;
+}
+
+.eco-topbar-btn {
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    background: rgba(255, 255, 255, 0.02);
+    color: #edf6f4;
+    border-radius: 12px;
+    padding: 0.55rem 0.8rem;
+    font-size: 0.9rem;
+    font-family: inherit;
+    cursor: pointer;
+}
+
+.export-btn {
+    background: rgba(255, 255, 255, 0.08);
+}
+
+.eco-dashboard {
+    padding: 1.3rem 1.4rem 2rem;
+}
+
+.eco-header-row {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1rem;
+    margin-bottom: 0.35rem;
+}
+
+.eco-header-row h2 {
+    color: #edf6f4;
+    font-size: clamp(2.5rem, 5vw, 4rem);
+    line-height: 1.05;
+    letter-spacing: -0.05em;
+}
+
+.live-pill {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    background: rgba(37, 175, 120, 0.14);
+    color: #98f7c8;
+    padding: 0.5rem 0.8rem;
+    border-radius: 999px;
+    font-size: 0.84rem;
+    font-weight: 700;
+}
+
+.eco-subheading {
+    margin: 0 0 1.8rem;
+    color: rgba(237, 246, 244, 0.72);
+    font-size: 1.1rem;
+}
+
+.eco-stats {
+    display: grid;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    gap: 1rem;
+    margin-bottom: 1.4rem;
+}
+
+.eco-stat-card {
+    background: rgba(255, 255, 255, 0.02);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    border-radius: 14px;
+    padding: 1.1rem 1rem 1rem;
+    min-height: 120px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.eco-stat-card span {
+    color: rgba(237, 246, 244, 0.72);
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    font-size: 0.74rem;
+}
+
+.eco-stat-card strong {
+    font-size: clamp(2rem, 3vw, 3rem);
+    color: #edf6f4;
+    letter-spacing: -0.06em;
+}
+
+.eco-stat-card.critical strong {
+    color: #f77a90;
+}
+
+.eco-grid-panel {
+    display: grid;
+    grid-template-columns: 1.6fr 0.9fr;
+    gap: 1rem;
+    align-items: start;
+}
+
+.eco-panel {
+    background: rgba(255, 255, 255, 0.02);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    border-radius: 16px;
+    padding: 1.1rem 1rem 1rem;
+}
+
+.eco-panel h3 {
+    margin: 0 0 1rem;
+    color: #edf6f4;
+    font-size: 1.2rem;
+    letter-spacing: -0.04em;
+}
+
+.eco-bin-row {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 0.8rem;
+    margin-top: 0.75rem;
+    margin-bottom: 0.35rem;
+    color: #edf6f4;
+}
+
+.eco-bin-label {
+    display: flex;
+    align-items: center;
+    gap: 0.7rem;
+    font-weight: 700;
+    font-size: 1.04rem;
+    color: #edf6f4;
+}
+
+.eco-bin-value {
+    font-size: 1.2rem;
+    font-weight: 700;
+    color: #edf6f4;
+}
+
+.bin-icon {
+    width: 18px;
+    height: 18px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 6px;
+    font-size: 0.72rem;
+    color: #fff;
+}
+
+.bin-red {
+    background: rgba(247, 122, 144, 0.96);
+}
+
+.bin-amber {
+    background: rgba(249, 177, 93, 0.96);
+}
+
+.bin-green {
+    background: rgba(110, 227, 184, 0.96);
+}
+
+.eco-progress {
+    width: 100%;
+    height: 12px;
+    background: rgba(255, 255, 255, 0.08);
+    border-radius: 999px;
+    overflow: hidden;
+    margin-bottom: 0.8rem;
+}
+
+.eco-progress span {
+    display: block;
+    height: 100%;
+    border-radius: inherit;
+}
+
+.eco-bar-chart {
+    height: 200px;
+    display: flex;
+    align-items: end;
+    justify-content: space-between;
+    gap: 0.8rem;
+    padding-top: 1rem;
+}
+
+.eco-bar-group {
+    display: flex;
+    flex: 1;
+    flex-direction: column;
+    align-items: center;
+    justify-content: end;
+    min-height: 160px;
+    gap: 0.5rem;
+}
+
+.eco-bar {
+    display: block;
+    width: 100%;
+    max-width: 26px;
+    border-radius: 8px 8px 0 0;
+    background: linear-gradient(180deg, #76f0d5 0%, #4cc9c1 100%);
+    min-height: 26px;
+}
+
+.eco-bar-group label {
+    color: rgba(237, 246, 244, 0.72);
+    font-size: 0.76rem;
+}
+
 .project-modal__close {
     position: absolute;
     top: 1rem;
@@ -910,12 +1278,86 @@ body.modal-open {
     height: 42px;
     border-radius: 50%;
     border: none;
-    background: rgba(15, 23, 42, 0.86);
+    background-color: rgba(15, 23, 42, 0.9);
+    background-image: none;
     color: #fff;
     font-size: 2rem;
     cursor: pointer;
     line-height: 1;
     z-index: 2;
+    box-shadow: 0 10px 24px rgba(15, 23, 42, 0.2);
+    transition: background-color 0.2s ease, transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.project-modal__close:not(:hover):not(:focus-visible):not(:active) {
+    background-color: rgba(15, 23, 42, 0.9);
+    color: #fff;
+}
+
+.project-modal__close:hover,
+.project-modal__close:focus-visible,
+.project-modal__close:active {
+    background-color: rgba(31, 41, 55, 0.96);
+    color: #fff;
+    transform: translateY(-1px);
+    box-shadow: 0 14px 28px rgba(15, 23, 42, 0.18);
+}
+
+.project-modal .button.secondary {
+    background: linear-gradient(135deg, rgba(15, 23, 42, 0.9), rgba(31, 41, 55, 0.96));
+    border: 1px solid rgba(255, 255, 255, 0.04);
+    color: #fff;
+    box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.06), 0 12px 24px rgba(15, 23, 42, 0.2);
+}
+
+.project-modal .button.secondary:hover,
+.project-modal .button.secondary:focus-visible {
+    background: linear-gradient(135deg, rgba(31, 41, 55, 0.98), rgba(15, 23, 42, 0.96));
+    border-color: rgba(255, 255, 255, 0.08);
+    color: #fff;
+    box-shadow: 0 16px 30px rgba(15, 23, 42, 0.24);
+}
+
+.back-to-top {
+    position: fixed;
+    right: 1.25rem;
+    bottom: 1.25rem;
+    z-index: 80;
+    width: 52px;
+    height: 52px;
+    border: none;
+    border-radius: 50%;
+    background: linear-gradient(135deg, var(--accent), var(--accent-strong));
+    color: #1a120a;
+    font-size: 1.65rem;
+    font-weight: 800;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 20px 40px rgba(247, 178, 103, 0.28);
+    cursor: pointer;
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(12px);
+    transition: opacity 0.2s ease, visibility 0.2s ease, transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.back-to-top.visible {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0);
+}
+
+.back-to-top:hover,
+.back-to-top:focus-visible {
+    box-shadow: 0 22px 46px rgba(247, 178, 103, 0.42);
+    transform: translateY(-2px);
+}
+
+.back-to-top span {
+    display: inline-block;
+    line-height: 1;
+    transform: translateY(-1px);
 }
 
 .site-footer {
