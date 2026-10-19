@@ -1,0 +1,814 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <title>Pesez Farm</title>
+  <style>
+    :root {
+      --bg: #f6f4fb;
+      --card: #fff;
+      --tx: #1d1b2e;
+      --mu: #6b6880;
+      --bd: #e6e2f2;
+      --pr: #7c3aed;
+      --pr2: #6d28d9;
+      --ok: #16a34a;
+      --bad: #dc2626;
+      --nav: #111c2d;
+      --nav-soft: #1a2941;
+      --shadow: 0 18px 45px rgba(15, 23, 42, .22);
+      color-scheme: light;
+      box-sizing: border-box;
+      padding-top: env(safe-area-inset-top, 0px);
+      padding-bottom: env(safe-area-inset-bottom, 0px)
+    }
+
+    @media(prefers-color-scheme:dark) {
+      :root:not([data-theme="light"]) {
+        --bg: #13111c;
+        --card: #1d1a2b;
+        --tx: #f0eefa;
+        --mu: #a29fba;
+        --bd: #2f2b45;
+        --pr: #a78bfa;
+        --pr2: #8b5cf6;
+        --nav: #111827;
+        --nav-soft: #1d2433;
+        color-scheme: dark
+      }
+    }
+
+    :root[data-theme="dark"] {
+      --bg: #13111c;
+      --card: #1d1a2b;
+      --tx: #f0eefa;
+      --mu: #a29fba;
+      --bd: #2f2b45;
+      --pr: #a78bfa;
+      --pr2: #8b5cf6;
+      --nav: #111827;
+      --nav-soft: #1d2433;
+      color-scheme: dark
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0
+    }
+
+    html {
+      scroll-padding-top: env(safe-area-inset-top, 0px);
+      scroll-behavior: smooth
+    }
+
+    body {
+      background: var(--bg);
+      color: var(--tx);
+      font: 15px/1.45 system-ui, -apple-system, Segoe UI, Roboto, sans-serif;
+      min-height: 100vh;
+      overflow-x: hidden
+    }
+
+    button,
+    input,
+    select,
+    textarea {
+      font: inherit
+    }
+
+    #root {
+      min-height: 100vh
+    }
+
+    .app-shell {
+      display: flex;
+      min-height: 100vh;
+      max-width: 100vw
+    }
+
+    .app-sidebar {
+      width: 280px;
+      background: var(--nav);
+      border-right: 1px solid rgba(255, 255, 255, .05);
+      display: flex;
+      flex-direction: column;
+      flex-shrink: 0;
+      position: sticky;
+      top: 0;
+      height: 100vh;
+      z-index: 20;
+      transition: transform .25s ease
+    }
+
+    .sidebar-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 18px 18px 12px;
+      gap: 12px;
+      min-height: 72px
+    }
+
+    .brand-wrap {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      min-width: 0
+    }
+
+    .brand-badge {
+      width: 34px;
+      height: 34px;
+      border-radius: 10px;
+      background: linear-gradient(135deg, #7c3aed, #58c6f7);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 20px;
+      box-shadow: 0 8px 18px rgba(124, 58, 237, .35)
+    }
+
+    .brand-name {
+      font-weight: 800;
+      color: #fff;
+      font-size: 22px;
+      white-space: nowrap
+    }
+
+    .sidebar-close {
+      display: none
+    }
+
+    .side-nav {
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+      padding: 10px 10px 14px;
+      overflow-y: auto
+    }
+
+    .side-nav button {
+      background: none;
+      border: 0;
+      color: #edf3ff;
+      padding: 14px 16px;
+      border-radius: 12px;
+      font: inherit;
+      font-weight: 600;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      justify-content: flex-start;
+      width: 100%;
+      min-height: 52px;
+      white-space: nowrap
+    }
+
+    .side-nav button.on {
+      background: var(--pr);
+      color: #fff;
+      box-shadow: 0 10px 20px rgba(124, 58, 237, .22)
+    }
+
+    .side-nav button span {
+      font-size: 20px;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 22px
+    }
+
+    .sidebar-user {
+      margin-top: auto;
+      padding: 18px 16px 18px;
+      border-top: 1px solid rgba(255, 255, 255, .08);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+      color: #fff
+    }
+
+    .sidebar-user .meta {
+      min-width: 0;
+      display: flex;
+      flex-direction: column
+    }
+
+    .sidebar-user strong {
+      font-size: 15px;
+      display: block;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis
+    }
+
+    .sidebar-user small {
+      color: rgba(255, 255, 255, .7);
+      font-size: 12px
+    }
+
+    .sidebar-user .status {
+      padding: 8px 10px;
+      border-radius: 999px;
+      background: rgba(255, 255, 255, .08);
+      font-size: 13px;
+      font-weight: 700;
+      border: 1px solid rgba(255, 255, 255, .08)
+    }
+
+    .main-panel {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      min-width: 0
+    }
+
+    .topbar {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+      padding: 14px 18px;
+      background: rgba(255, 255, 255, .72);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid var(--bd);
+      position: sticky;
+      top: 0;
+      z-index: 12
+    }
+
+    .topbar-group {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      min-width: 0
+    }
+
+    .menu-toggle {
+      display: none;
+      width: 44px;
+      height: 44px;
+      border-radius: 12px;
+      border: 1px solid rgba(17, 28, 45, .12);
+      background: rgba(17, 28, 45, .02);
+      color: var(--nav);
+      cursor: pointer;
+      align-items: center;
+      justify-content: center;
+      font-size: 24px;
+      flex-shrink: 0
+    }
+
+    .topbar-title {
+      font-weight: 800;
+      color: var(--nav);
+      font-size: 1.2rem;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis
+    }
+
+    .logout-btn {
+      border: 1px solid rgba(17, 28, 45, .12);
+      background: #fff;
+      color: var(--nav);
+      border-radius: 12px;
+      padding: 10px 14px;
+      cursor: pointer;
+      font: inherit;
+      font-weight: 700;
+      min-height: 44px
+    }
+
+    .wrap {
+      max-width: 1000px;
+      margin: 0 auto;
+      padding: 16px;
+      width: 100%
+    }
+
+    h2 {
+      margin: 6px 0 14px;
+      font-size: 22px
+    }
+
+    .card {
+      background: var(--card);
+      border: 1px solid var(--bd);
+      border-radius: 16px;
+      padding: 16px;
+      margin-bottom: 16px;
+      box-shadow: 0 10px 24px rgba(15, 23, 42, .04)
+    }
+
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+      gap: 12px;
+      margin-bottom: 16px
+    }
+
+    .stat small {
+      color: var(--mu);
+      font-weight: 700;
+      letter-spacing: .5px;
+      text-transform: uppercase;
+      font-size: 11px
+    }
+
+    .stat div {
+      font-size: 28px;
+      font-weight: 800;
+      margin-top: 4px;
+      word-break: break-word
+    }
+
+    form {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+      gap: 10px;
+      align-items: end
+    }
+
+    label {
+      font-size: 12px;
+      font-weight: 700;
+      color: var(--mu);
+      display: block
+    }
+
+    input,
+    select,
+    textarea {
+      width: 100%;
+      padding: 11px 12px;
+      border: 1px solid var(--bd);
+      border-radius: 10px;
+      background: var(--bg);
+      color: var(--tx);
+      font: inherit;
+      margin-top: 4px;
+      min-height: 44px;
+      max-width: 100%
+    }
+
+    textarea {
+      min-height: 90px;
+      resize: vertical
+    }
+
+    .btn {
+      background: var(--pr);
+      color: #fff;
+      border: 0;
+      padding: 10px 16px;
+      border-radius: 10px;
+      font: inherit;
+      font-weight: 700;
+      cursor: pointer;
+      min-height: 44px
+    }
+
+    .btn.g {
+      background: none;
+      color: var(--bad);
+      padding: 6px 10px;
+      border: 1px solid var(--bd)
+    }
+
+    .tw {
+      overflow-x: auto;
+      -webkit-overflow-scrolling: touch
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 14px;
+      min-width: 560px
+    }
+
+    th {
+      text-align: left;
+      color: var(--mu);
+      font-size: 11px;
+      text-transform: uppercase;
+      letter-spacing: .5px;
+      padding: 8px;
+      border-bottom: 1px solid var(--bd)
+    }
+
+    td {
+      padding: 8px;
+      border-bottom: 1px solid var(--bd);
+      white-space: nowrap;
+      max-width: 180px;
+      overflow: hidden;
+      text-overflow: ellipsis
+    }
+
+    .bars {
+      display: flex;
+      gap: 8px;
+      align-items: flex-end;
+      height: 140px;
+      min-width: 320px
+    }
+
+    .bars div {
+      flex: 1;
+      text-align: center;
+      font-size: 11px;
+      color: var(--mu)
+    }
+
+    .bars i {
+      display: block;
+      background: var(--pr);
+      border-radius: 6px 6px 0 0;
+      min-height: 2px;
+      margin-bottom: 4px
+    }
+
+    .tag {
+      padding: 2px 8px;
+      border-radius: 99px;
+      font-size: 12px;
+      font-weight: 700;
+      background: var(--bd)
+    }
+
+    .login {
+      max-width: 360px;
+      margin: 12vh auto
+    }
+
+    .err {
+      color: var(--bad);
+      font-weight: 600;
+      margin-top: 8px
+    }
+
+    .note {
+      color: var(--mu);
+      font-size: 12px;
+      margin-top: 10px
+    }
+
+    .empty {
+      color: var(--mu);
+      padding: 14px 0
+    }
+
+    .pos {
+      color: var(--ok);
+      font-weight: 800
+    }
+
+    .neg {
+      color: var(--bad);
+      font-weight: 800
+    }
+
+    .drawer-backdrop {
+      position: fixed;
+      inset: 0;
+      background: rgba(15, 23, 42, .4);
+      opacity: 0;
+      visibility: hidden;
+      transition: opacity .2s ease, visibility .2s ease;
+      z-index: 40
+    }
+
+    .drawer-backdrop.is-open {
+      opacity: 1;
+      visibility: visible
+    }
+
+    @media (max-width:768px) {
+      body {
+        overflow-x: hidden
+      }
+
+      .app-shell {
+        display: block
+      }
+
+      .app-sidebar {
+        position: fixed;
+        left: 0;
+        top: 0;
+        bottom: 0;
+        transform: translateX(-105%);
+        width: min(82vw, 320px);
+        max-width: 100%;
+        height: 100vh;
+        box-shadow: var(--shadow);
+        z-index: 50
+      }
+
+      .app-sidebar.mobile-open {
+        transform: translateX(0)
+      }
+
+      .sidebar-header {
+        padding: 14px 14px 10px
+      }
+
+      .sidebar-close {
+        display: inline-flex;
+        width: 36px;
+        height: 36px;
+        border: none;
+        border-radius: 10px;
+        background: rgba(255, 255, 255, .08);
+        color: #fff;
+        align-items: center;
+        justify-content: center;
+        font-size: 26px;
+        cursor: pointer
+      }
+
+      .side-nav {
+        padding: 8px 8px 12px
+      }
+
+      .side-nav button {
+        padding: 12px 14px;
+        min-height: 50px
+      }
+
+      .sidebar-user {
+        padding: 14px 14px 18px
+      }
+
+      .main-panel {
+        min-width: 0;
+        width: 100%
+      }
+
+      .topbar {
+        padding: 10px 14px;
+        position: sticky;
+        top: 0
+      }
+
+      .menu-toggle {
+        display: inline-flex
+      }
+
+      .topbar-title {
+        font-size: 1.05rem
+      }
+
+      .logout-btn {
+        padding: 8px 12px;
+        font-size: 0.95rem
+      }
+
+      .wrap {
+        padding: 14px
+      }
+
+      .grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+
+      form {
+        grid-template-columns: 1fr
+      }
+
+      .login {
+        max-width: 100%;
+        margin: 12vh 0 0
+      }
+
+      .card {
+        padding: 14px
+      }
+
+      h2 {
+        font-size: 20px
+      }
+
+      .bars {
+        min-width: 300px
+      }
+
+      table {
+        min-width: 540px
+      }
+    }
+
+    @media (max-width:420px) {
+      .grid {
+        grid-template-columns: 1fr
+      }
+
+      .topbar {
+        gap: 8px
+      }
+
+      .topbar-title {
+        font-size: 1rem
+      }
+
+      .logout-btn {
+        padding: 8px 10px;
+        font-size: 0.9rem
+      }
+
+      .brand-name {
+        font-size: 18px
+      }
+
+      .sidebar-user strong {
+        font-size: 14px
+      }
+
+      .side-nav button {
+        font-size: 0.95rem
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <div id="root"></div>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/react/18.3.1/umd/react.production.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/react-dom/18.3.1/umd/react-dom.production.min.js"></script>
+  <script>
+    const { useState, useEffect } = React, h = React.createElement;
+    const today = () => new Date().toISOString().slice(0, 10);
+    const KEY = 'pesez_farm_v1';
+    const seed = { nid: 2, users: [{ id: 1, username: 'admin', password: 'admin123', role: 'admin' }], flocks: [], eggs: [], feed: [], usage: [], mort: [], health: [] };
+    const load = () => { try { const s = localStorage.getItem(KEY); if (s) return JSON.parse(s) } catch (e) { } return seed };
+    const save = d => { try { localStorage.setItem(KEY, JSON.stringify(d)) } catch (e) { } };
+    const sum = (a, f) => a.reduce((t, x) => t + (+x[f] || 0), 0);
+    const live = a => a.filter(x => !x.del);
+
+    function Inp({ f, v, set, db }) {
+      const p = { value: v ?? '', onChange: e => set(e.target.value), required: f.req !== false && f.t !== 'textarea' };
+      let el;
+      if (f.t === 'flock') el = h('select', p, h('option', { value: '' }, 'Select flock'), db.flocks.filter(x => x.status === 'active').map(x => h('option', { key: x.id, value: x.id }, x.name)));
+      else if (f.t === 'feed') el = h('select', p, h('option', { value: '' }, 'Select feed'), db.feed.map(x => h('option', { key: x.id, value: x.type }, x.type)));
+      else if (f.t === 'select') el = h('select', p, f.o.map(o => h('option', { key: o }, o)));
+      else if (f.t === 'textarea') el = h('textarea', { ...p, rows: 1 });
+      else el = h('input', { ...p, type: f.t || 'text', min: f.t === 'number' ? 0 : undefined, step: f.step });
+      return h('label', null, f.l, el);
+    }
+
+    function Log({ db, upd, user, tbl, title, fields, cols, onAdd }) {
+      const init = () => Object.fromEntries(fields.map(f => [f.k, f.d ?? (f.t === 'date' ? today() : f.o ? f.o[0] : '')]));
+      const [v, setV] = useState(init);
+      const flock = id => (db.flocks.find(x => x.id == id) || {}).name || '—';
+      const rows = live(db[tbl]).slice().reverse();
+      const submit = e => { e.preventDefault(); upd(d => { d[tbl].push({ ...v, id: d.nid++, by: user.username, del: 0 }); onAdd && onAdd(d, v) }); setV(init()) };
+      return h('div', null,
+        h('div', { className: 'card' }, h('h3', { style: { marginBottom: 10 } }, 'Add ' + title),
+          h('form', { onSubmit: submit }, fields.map(f => h(Inp, { key: f.k, f, db, v: v[f.k], set: x => setV({ ...v, [f.k]: x }) })), h('button', { className: 'btn' }, 'Save'))),
+        h('div', { className: 'card tw' }, rows.length ? h('table', null, h('thead', null, h('tr', null, cols.map(c => h('th', { key: c[0] }, c[0])), h('th'))),
+          h('tbody', null, rows.map(r => h('tr', { key: r.id }, cols.map(c => h('td', { key: c[0] }, c[1] === 'flock_id' ? flock(r.flock_id) : r[c[1]] || '—')),
+            h('td', null, h('button', { className: 'btn g', onClick: () => upd(d => { d[tbl].find(x => x.id === r.id).del = 1 }) }, 'Archive')))))) : h('div', { className: 'empty' }, 'No records yet.')));
+    }
+
+    function Dashboard({ db }) {
+      const t = today(), days = [...Array(7)].map((_, i) => { const d = new Date(); d.setDate(d.getDate() - 6 + i); return d.toISOString().slice(0, 10) });
+      const eg = live(db.eggs), mx = Math.max(1, ...days.map(d => sum(eg.filter(e => e.date === d), 'good')));
+      const birds = db.flocks.filter(f => f.status === 'active').reduce((n, f) => n + (+f.initial - sum(live(db.mort).filter(m => m.flock_id == f.id), 'count')), 0);
+      const S = (l, x) => h('div', { className: 'card stat' }, h('small', null, l), h('div', null, x));
+      return h('div', null, h('h2', null, 'Dashboard'),
+        h('div', { className: 'grid' }, S('Active birds', birds), S('Eggs today', sum(eg.filter(e => e.date === t), 'good')), S('Feed in stock (kg)', sum(db.feed, 'kg')), S('Mortality today', sum(live(db.mort).filter(m => m.date === t), 'count'))),
+        h('div', { className: 'card' }, h('h3', { style: { marginBottom: 12 } }, 'Good eggs — last 7 days'),
+          h('div', { className: 'bars' }, days.map(d => { const n = sum(eg.filter(e => e.date === d), 'good'); return h('div', { key: d }, h('i', { style: { height: n / mx * 100 + 'px' } }), n, h('br'), d.slice(5)) }))));
+    }
+
+    function Flocks({ db, upd }) {
+      const [v, setV] = useState({ name: '', type: 'Layer', initial: '', date: today() });
+      const cur = f => f.initial - sum(live(db.mort).filter(m => m.flock_id == f.id), 'count');
+      return h('div', null, h('h2', null, 'Flocks'),
+        h('div', { className: 'card' }, h('form', { onSubmit: e => { e.preventDefault(); upd(d => { d.flocks.push({ ...v, id: d.nid++, initial: +v.initial, status: 'active' }) }); setV({ ...v, name: '', initial: '' }) } },
+          h('label', null, 'Batch name', h('input', { required: 1, value: v.name, onChange: e => setV({ ...v, name: e.target.value }) })),
+          h('label', null, 'Type', h('select', { value: v.type, onChange: e => setV({ ...v, type: e.target.value }) }, h('option', null, 'Layer'), h('option', null, 'Broiler'))),
+          h('label', null, 'Initial count', h('input', { type: 'number', min: 1, required: 1, value: v.initial, onChange: e => setV({ ...v, initial: e.target.value }) })),
+          h('label', null, 'Arrival date', h('input', { type: 'date', required: 1, value: v.date, onChange: e => setV({ ...v, date: e.target.value }) })),
+          h('button', { className: 'btn' }, 'Add flock'))),
+        h('div', { className: 'card tw' }, db.flocks.length ? h('table', null, h('thead', null, h('tr', null, ['Batch', 'Type', 'Arrived', 'Initial', 'Current', 'Status', ''].map(x => h('th', { key: x }, x)))),
+          h('tbody', null, db.flocks.map(f => h('tr', { key: f.id }, h('td', null, f.name), h('td', null, f.type), h('td', null, f.date), h('td', null, f.initial), h('td', null, cur(f)), h('td', null, h('span', { className: 'tag' }, f.status)),
+            h('td', null, h('button', { className: 'btn g', style: { color: 'var(--pr)' }, onClick: () => upd(d => { const x = d.flocks.find(y => y.id === f.id); x.status = x.status === 'active' ? 'sold' : 'active' }) }, f.status === 'active' ? 'Mark sold' : 'Reactivate')))))) : h('div', { className: 'empty' }, 'No flocks yet.')));
+    }
+
+    function Feed({ db, upd, user }) {
+      const [v, setV] = useState({ type: '', kg: '' });
+      return h('div', null, h('h2', null, 'Feed'),
+        h('div', { className: 'card' }, h('h3', { style: { marginBottom: 10 } }, 'Feed inventory'),
+          h('form', { onSubmit: e => { e.preventDefault(); upd(d => { const x = d.feed.find(y => y.type.toLowerCase() === v.type.trim().toLowerCase()); x ? x.kg = +x.kg + +v.kg : d.feed.push({ id: d.nid++, type: v.type.trim(), kg: +v.kg }) }); setV({ type: '', kg: '' }) } },
+            h('label', null, 'Feed type', h('input', { required: 1, value: v.type, onChange: e => setV({ ...v, type: e.target.value }) })),
+            h('label', null, 'Add stock (kg)', h('input', { type: 'number', min: 0, step: '0.01', required: 1, value: v.kg, onChange: e => setV({ ...v, kg: e.target.value }) })),
+            h('button', { className: 'btn' }, 'Add / restock')),
+          h('div', { className: 'tw', style: { marginTop: 12 } }, db.feed.length ? h('table', null, h('thead', null, h('tr', null, h('th', null, 'Feed'), h('th', null, 'In stock (kg)'))), h('tbody', null, db.feed.map(x => h('tr', { key: x.id }, h('td', null, x.type), h('td', null, (+x.kg).toFixed(2)))))) : h('div', { className: 'empty' }, 'No feed in stock.'))),
+        h(Log, {
+          db, upd, user, tbl: 'usage', title: 'feed usage',
+          fields: [{ k: 'flock_id', l: 'Flock', t: 'flock' }, { k: 'date', l: 'Date', t: 'date' }, { k: 'type', l: 'Feed type', t: 'feed' }, { k: 'kg', l: 'Used (kg)', t: 'number', step: '0.01' }],
+          cols: [['Date', 'date'], ['Flock', 'flock_id'], ['Feed', 'type'], ['Kg', 'kg'], ['By', 'by']],
+          onAdd: (d, v) => { const x = d.feed.find(y => y.type === v.type); if (x) x.kg = Math.max(0, +x.kg - +v.kg) }
+        }));
+    }
+
+    function Reports({ db }) {
+      const m = new Date(); m.setDate(1);
+      const [a, setA] = useState(m.toISOString().slice(0, 10)), [b, setB] = useState(today()), [p, setP] = useState({ egg: 2, feed: 8, bird: 80 });
+      const inr = (x) => x >= a && x <= b, eg = live(db.eggs).filter(e => inr(e.date)), fu = live(db.usage).filter(e => inr(e.date)), mo = live(db.mort).filter(e => inr(e.date)), he = live(db.health).filter(e => inr(e.date));
+      const good = sum(eg, 'good'), feed = sum(fu, 'kg'), sold = sum(db.flocks.filter(f => f.status === 'sold' && inr(f.date)), 'initial');
+      const rev = good * p.egg + sold * p.bird, cost = feed * p.feed, net = rev - cost;
+      const pr = (k, l) => h('label', { key: k }, l, h('input', { type: 'number', min: 0, step: '0.01', value: p[k], onChange: e => setP({ ...p, [k]: +e.target.value }) }));
+      const S = (l, x) => h('div', { className: 'card stat' }, h('small', null, l), h('div', null, x));
+      return h('div', null, h('h2', null, 'Reports & Profit'),
+        h('div', { className: 'card' }, h('form', null, h('label', null, 'From', h('input', { type: 'date', value: a, onChange: e => setA(e.target.value) })), h('label', null, 'To', h('input', { type: 'date', value: b, onChange: e => setB(e.target.value) })), pr('egg', 'Price per egg'), pr('feed', 'Feed cost per kg'), pr('bird', 'Price per bird sold'))),
+        h('div', { className: 'grid' }, S('Good eggs', good), S('Damaged eggs', sum(eg, 'damaged')), S('Feed used (kg)', feed.toFixed(1)), S('Mortality', sum(mo, 'count'))),
+        h('div', { className: 'grid' }, S('Revenue', rev.toFixed(2)), S('Feed cost', cost.toFixed(2)), h('div', { className: 'card stat' }, h('small', null, 'Net profit'), h('div', { className: net >= 0 ? 'pos' : 'neg' }, net.toFixed(2)))),
+        h('div', { className: 'card' }, h('h3', { style: { marginBottom: 8 } }, 'Health activity'), he.length ? he.map(r => h('div', { key: r.id, style: { padding: '4px 0' } }, r.date + ' · ' + r.type + ' · ' + r.med)) : h('div', { className: 'empty' }, 'None in this period.')));
+    }
+
+    function Users({ db, upd, me }) {
+      const [v, setV] = useState({ username: '', password: '', role: 'worker' }), [e, setE] = useState('');
+      return h('div', null, h('h2', null, 'Users'),
+        h('div', { className: 'card' }, h('form', { onSubmit: ev => { ev.preventDefault(); if (db.users.some(u => u.username === v.username)) return setE('Username already exists.'); setE(''); upd(d => { d.users.push({ ...v, id: d.nid++ }) }); setV({ username: '', password: '', role: 'worker' }) } },
+          h('label', null, 'Username', h('input', { required: 1, value: v.username, onChange: x => setV({ ...v, username: x.target.value }) })),
+          h('label', null, 'Password', h('input', { type: 'password', required: 1, value: v.password, onChange: x => setV({ ...v, password: x.target.value }) })),
+          h('label', null, 'Role', h('select', { value: v.role, onChange: x => setV({ ...v, role: x.target.value }) }, h('option', null, 'worker'), h('option', null, 'admin'))),
+          h('button', { className: 'btn' }, 'Add user')), e && h('div', { className: 'err' }, e)),
+        h('div', { className: 'card tw' }, h('table', null, h('thead', null, h('tr', null, ['Username', 'Role', ''].map(x => h('th', { key: x }, x)))),
+          h('tbody', null, db.users.map(u => h('tr', { key: u.id }, h('td', null, u.username), h('td', null, h('span', { className: 'tag' }, u.role)), h('td', null, u.id !== me.id && h('button', { className: 'btn g', onClick: () => upd(d => { d.users = d.users.filter(x => x.id !== u.id) }) }, 'Remove'))))))));
+    }
+
+    function Login({ db, onIn }) {
+      const [u, setU] = useState(''), [p, setP] = useState(''), [e, setE] = useState('');
+      return h('div', { className: 'login card' }, h('h2', null, '🐔 Pesez Farm'),
+        h('form', { style: { gridTemplateColumns: '1fr' }, onSubmit: ev => { ev.preventDefault(); const x = db.users.find(y => y.username === u && y.password === p); x ? onIn(x) : setE('Invalid username or password.') } },
+          h('label', null, 'Username', h('input', { required: 1, autoFocus: 1, value: u, onChange: x => setU(x.target.value) })),
+          h('label', null, 'Password', h('input', { type: 'password', required: 1, value: p, onChange: x => setP(x.target.value) })),
+          h('button', { className: 'btn' }, 'Sign in')), e && h('div', { className: 'err' }, e),
+        h('div', { className: 'note' }, 'Demo login: admin / admin123'));
+    }
+
+    function App() {
+      const [db, setDb] = useState(load), [user, setUser] = useState(null), [tab, setTab] = useState('Dashboard'), [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+      const upd = fn => setDb(d => { const n = JSON.parse(JSON.stringify(d)); fn(n); save(n); return n });
+      const closeDrawer = () => setMobileMenuOpen(false);
+      useEffect(() => {
+        const onKey = (e) => { if (e.key === 'Escape') closeDrawer(); };
+        if (mobileMenuOpen) {
+          document.body.style.overflow = 'hidden';
+          window.addEventListener('keydown', onKey);
+          return () => { window.removeEventListener('keydown', onKey); document.body.style.overflow = ''; };
+        }
+        document.body.style.overflow = '';
+        return () => window.removeEventListener('keydown', onKey);
+      }, [mobileMenuOpen]);
+      if (!user) return h(Login, { db, onIn: setUser });
+      const L = (tbl, title, fields, cols) => h(Log, { db, upd, user, tbl, title, fields, cols });
+      const fl = { k: 'flock_id', l: 'Flock', t: 'flock' }, dt = { k: 'date', l: 'Date', t: 'date' };
+      const pages = {
+        Dashboard: () => h(Dashboard, { db }), Flocks: () => h(Flocks, { db, upd }),
+        Eggs: () => h('div', null, h('h2', null, 'Egg production'), L('eggs', 'egg collection', [fl, dt, { k: 'good', l: 'Good eggs', t: 'number' }, { k: 'damaged', l: 'Damaged', t: 'number', d: 0 }], [['Date', 'date'], ['Flock', 'flock_id'], ['Good', 'good'], ['Damaged', 'damaged'], ['By', 'by']])),
+        Feed: () => h(Feed, { db, upd, user }),
+        Mortality: () => h('div', null, h('h2', null, 'Mortality'), L('mort', 'mortality', [fl, dt, { k: 'count', l: 'Birds lost', t: 'number' }, { k: 'cause', l: 'Cause', req: false }], [['Date', 'date'], ['Flock', 'flock_id'], ['Birds', 'count'], ['Cause', 'cause'], ['By', 'by']])),
+        Health: () => h('div', null, h('h2', null, 'Health records'), L('health', 'health record', [fl, dt, { k: 'type', l: 'Type', t: 'select', o: ['Vaccination', 'Treatment'] }, { k: 'med', l: 'Medication' }, { k: 'next', l: 'Next due', t: 'date', req: false, d: '' }, { k: 'notes', l: 'Notes', t: 'textarea' }], [['Date', 'date'], ['Flock', 'flock_id'], ['Type', 'type'], ['Medication', 'med'], ['Next due', 'next']])),
+        Reports: () => h(Reports, { db }),
+      };
+      if (user.role === 'admin') pages.Users = () => h(Users, { db, upd, me: user });
+      return h('div', { className: 'app-shell' },
+        h('div', { className: mobileMenuOpen ? 'drawer-backdrop is-open' : 'drawer-backdrop', onClick: closeDrawer }),
+        h('aside', { className: mobileMenuOpen ? 'app-sidebar mobile-open' : 'app-sidebar' },
+          h('div', { className: 'sidebar-header' },
+            h('div', { className: 'brand-wrap' }, h('div', { className: 'brand-badge' }, '🐔'), h('div', { className: 'brand-name' }, 'Farm System')),
+            h('button', { className: 'sidebar-close', type: 'button', onClick: closeDrawer, 'aria-label': 'Close menu' }, '×')
+          ),
+          h('nav', { className: 'side-nav' }, Object.keys(pages).map(k => h('button', { key: k, className: tab === k ? 'on' : '', type: 'button', onClick: () => { setTab(k); closeDrawer(); } }, h('span', null, k === 'Dashboard' ? '▦' : k === 'Sales & Receipts' ? '🧾' : k === 'Income Reports' ? '↗' : k === 'Expense Reports' ? '↘' : k === 'Staff Management' ? '👥' : k === 'Batch & Flock' ? '🐣' : k === 'Vaccination Calendar' ? '💉' : k === 'Documents' ? '📄' : k === 'Recycle Bin' ? '🗑' : '◫'), k))),
+          h('div', { className: 'sidebar-user' },
+            h('div', { className: 'meta' }, h('strong', null, user.username), h('small', null, user.role)),
+            h('div', { className: 'status' }, 'Live')
+          )
+        ),
+        h('main', { className: 'main-panel' },
+          h('header', { className: 'topbar' },
+            h('div', { className: 'topbar-group' },
+              h('button', { type: 'button', className: 'menu-toggle', onClick: () => setMobileMenuOpen(!mobileMenuOpen), 'aria-label': 'Toggle menu' }, '☰'),
+              h('div', { className: 'topbar-title' }, 'Farm System')
+            ),
+            h('button', { type: 'button', className: 'logout-btn', onClick: () => setUser(null) }, 'Logout')
+          ),
+          h('div', { className: 'wrap' }, (pages[tab] || pages.Dashboard)(), h('div', { className: 'note' }, 'Data is stored in this browser only.'))
+        )
+      );
+    }
+    ReactDOM.createRoot(document.getElementById('root')).render(h(App));
+  </script>
+</body>
+
+</html>
