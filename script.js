@@ -47,7 +47,7 @@ if (form) {
         });
 
         try {
-            fetch('https://formsubmit.co/ajax/edmondkorley5@gmail.com', {
+            fetch('https://formsubmit.co/ajax/hi@codewithedmond.dev', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',

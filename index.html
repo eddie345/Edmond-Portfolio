@@ -12,15 +12,26 @@
     <link
         href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&family=Playfair+Display:wght@600;700&display=swap"
         rel="stylesheet" />
-    <link rel="stylesheet" href="style.css?v=4" />
+        <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 34 34'%3E%3Crect width='34' height='34' rx='10' fill='%23171b21' stroke='%23ffd000' stroke-width='1.5'/%3E%3Cpath d='M10 12L6.5 17L10 22' stroke='%23ffd000' stroke-width='2.2' stroke-linecap='round' stroke-linejoin='round'/%3E%3Cpath d='M24 12L27.5 17L24 22' stroke='%23ffd000' stroke-width='2.2' stroke-linecap='round' stroke-linejoin='round'/%3E%3Cpath d='M14 12H20M14 17H18.5M14 22H20' stroke='%23f3efe8' stroke-width='2.2' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E" />
+    <link rel="stylesheet" href="style.css?v=5" />
 </head>
 
 <body>
     <header class="site-header">
         <div class="container nav-wrap">
-            
+            <a href="#hero" class="brand-logo" aria-label="CodeWithEdmond Home">
+                <span class="logo-mark">
+                    <svg width="34" height="34" viewBox="0 0 34 34" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <rect width="34" height="34" rx="10" fill="#171b21" stroke="rgba(255, 208, 0, 0.4)" stroke-width="1.5"/>
+                        <path d="M10 12L6.5 17L10 22" stroke="#ffd000" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/>
+                        <path d="M24 12L27.5 17L24 22" stroke="#ffd000" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/>
+                        <path d="M14 12H20M14 17H18.5M14 22H20" stroke="#f3efe8" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/>
+                    </svg>
+                </span>
+                <span class="logo-text">CodeWith<span>Edmond</span><span class="logo-dot">.dev</span></span>
+            </a>
 
-            <button class="nav-toggle" aria-label="Toggle navigation" aria-expanded="false">
+<button class="nav-toggle" aria-label="Toggle navigation" aria-expanded="false">
                 <span></span>
                 <span></span>
                 <span></span>
@@ -348,7 +359,7 @@
                             </div>
                             <h3>Building a design system from scratch in a weekend</h3>
                             <p>
-                                Tokens, components, docs — the process I follow to spin up a coherent system in 48
+                                Tokens, components, and docs: the process I follow to spin up a coherent system in 48
                                 hours.
                             </p>
                             <a href="#contact" class="text-link">Read more →</a>
@@ -365,7 +376,7 @@
                             </div>
                             <h3>5 lessons from my first year of full-time freelancing</h3>
                             <p>
-                                Contracts, pricing, scope creep — the things nobody tells you before you go solo.
+                                Contracts, pricing, and scope creep: what nobody tells you before you go solo.
                             </p>
                             <a href="#contact" class="text-link">Read more →</a>
                         </div>
@@ -385,22 +396,47 @@
                     </p>
 
                     <ul class="contact-list">
-                        <li><a href="https://mail.google.com/mail/?view=cm&fs=1&to=edmondkorley5@gmail.com"
-                                target="_blank" rel="noreferrer">edmondkorley5@gmail.com</a></li>
-                        <li><a href="https://wa.me/233500886680" target="_blank" rel="noreferrer">
-                                <span class="contact-icon" aria-hidden="true">
-                                    <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false">
-                                        <path
-                                            d="M20.52 3.48A11.86 11.86 0 0 0 12.02 0C5.46 0 .1 5.35.1 11.94c0 2.1.55 4.15 1.6 5.96L0 24l6.3-1.65A11.96 11.96 0 0 0 12.02 24c6.56 0 11.92-5.35 11.92-11.94 0-3.19-1.24-6.19-3.42-8.58Zm-8.5 18.4h-.04c-1.96-.03-3.89-.53-5.59-1.53l-.4-.24-3.74 1 .99-3.64-.26-.38A9.74 9.74 0 0 1 2.2 11.94C2.2 6.7 6.76 2.2 12.02 2.2a9.8 9.8 0 0 1 9.82 9.74c0 5.24-4.56 9.74-9.82 9.74Zm5.38-7.32c-.3-.15-1.77-.87-2.04-.97-.27-.1-.47-.15-.67.15-.2.3-.77.97-.95 1.17-.18.2-.35.22-.65.08-.3-.15-1.28-.47-2.45-1.5-.9-.8-1.52-1.8-1.7-2.1-.18-.3-.02-.46.13-.62l.18-.2c.18-.18.22-.3.3-.52.1-.2.05-.38-.02-.53-.08-.15-.67-1.62-.92-2.22-.24-.58-.5-.5-.68-.5h-.57c-.2 0-.52.07-.8.38-.28.3-1.06 1.04-1.06 2.53s1.08 2.93 1.23 3.14c.15.2 2.11 3.2 5.11 4.47.71.3 1.27.48 1.7.62.72.23 1.38.2 1.9.12.58-.09 1.77-.72 2.02-1.42.25-.7.25-1.3.18-1.42-.07-.12-.27-.2-.57-.35Z" />
+                        <li>
+                            <a href="mailto:hi@codewithedmond.dev">
+                                <span class="contact-icon contact-icon--email" aria-hidden="true">
+                                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                        <rect width="20" height="16" x="2" y="4" rx="2"></rect>
+                                        <path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"></path>
                                     </svg>
                                 </span>
-                                +233 500 886 680
+                                <span>hi@codewithedmond.dev</span>
                             </a>
                         </li>
-                        <li><a href="https://www.linkedin.com/in/edmond-korley-730b3b293/?isSelfProfile=true"
-                                target="_blank" rel="noreferrer">linkedin.com/in/edmond-korley-730b3b293</a></li>
-                        <li><a href="https://github.com/edmondkorley" target="_blank"
-                                rel="noreferrer">github.com/edmondkorley</a></li>
+                        <li>
+                            <a href="https://wa.me/233500886680" target="_blank" rel="noreferrer">
+                                <span class="contact-icon contact-icon--whatsapp" aria-hidden="true">
+                                    <svg viewBox="0 0 24 24" fill="currentColor">
+                                        <path d="M20.52 3.48A11.86 11.86 0 0 0 12.02 0C5.46 0 .1 5.35.1 11.94c0 2.1.55 4.15 1.6 5.96L0 24l6.3-1.65A11.96 11.96 0 0 0 12.02 24c6.56 0 11.92-5.35 11.92-11.94 0-3.19-1.24-6.19-3.42-8.58Zm-8.5 18.4h-.04c-1.96-.03-3.89-.53-5.59-1.53l-.4-.24-3.74 1 .99-3.64-.26-.38A9.74 9.74 0 0 1 2.2 11.94C2.2 6.7 6.76 2.2 12.02 2.2a9.8 9.8 0 0 1 9.82 9.74c0 5.24-4.56 9.74-9.82 9.74Zm5.38-7.32c-.3-.15-1.77-.87-2.04-.97-.27-.1-.47-.15-.67.15-.2.3-.77.97-.95 1.17-.18.2-.35.22-.65.08-.3-.15-1.28-.47-2.45-1.5-.9-.8-1.52-1.8-1.7-2.1-.18-.3-.02-.46.13-.62l.18-.2c.18-.18.22-.3.3-.52.1-.2.05-.38-.02-.53-.08-.15-.67-1.62-.92-2.22-.24-.58-.5-.5-.68-.5h-.57c-.2 0-.52.07-.8.38-.28.3-1.06 1.04-1.06 2.53s1.08 2.93 1.23 3.14c.15.2 2.11 3.2 5.11 4.47.71.3 1.27.48 1.7.62.72.23 1.38.2 1.9.12.58-.09 1.77-.72 2.02-1.42.25-.7.25-1.3.18-1.42-.07-.12-.27-.2-.57-.35Z"/>
+                                    </svg>
+                                </span>
+                                <span>WhatsApp (+233 500 886 680)</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="https://www.linkedin.com/in/edmond-korley-730b3b293/?isSelfProfile=true" target="_blank" rel="noreferrer">
+                                <span class="contact-icon contact-icon--linkedin" aria-hidden="true">
+                                    <svg viewBox="0 0 24 24" fill="currentColor">
+                                        <path d="M19 3a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h14m-.5 15.5v-5.3a3.26 3.26 0 0 0-3.26-3.26c-.85 0-1.84.52-2.28 1.3v-1.11h-2.79v8.37h2.79v-4.93c0-.77.62-1.4 1.39-1.4a1.4 1.4 0 0 1 1.4 1.4v4.93h2.75M6.88 8.56a1.68 1.68 0 0 0 1.68-1.68c0-.93-.75-1.69-1.68-1.69a1.69 1.69 0 0 0-1.69 1.69c0 .93.76 1.68 1.69 1.68m1.39 9.94v-8.37H5.5v8.37h2.77z"/>
+                                    </svg>
+                                </span>
+                                <span>LinkedIn</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="https://github.com/edmondkorley" target="_blank" rel="noreferrer">
+                                <span class="contact-icon contact-icon--github" aria-hidden="true">
+                                    <svg viewBox="0 0 24 24" fill="currentColor">
+                                        <path fill-rule="evenodd" clip-rule="evenodd" d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.53 1.032 1.53 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.019 10.019 0 0022 12.017C22 6.484 17.522 2 12 2z"/>
+                                    </svg>
+                                </span>
+                                <span>GitHub</span>
+                            </a>
+                        </li>
                     </ul>
                 </div>
 
@@ -489,7 +525,7 @@
         </div>
     </div>
 
-    <script src="script.js?v=4"></script>
+    <script src="script.js?v=5"></script>
     
 </body>
 
