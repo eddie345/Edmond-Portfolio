@@ -418,8 +418,16 @@
                     </div>
 
                     <label>
-                        <span>Subject</span>
-                        <input type="text" name="subject" placeholder="Project topic" />
+                        <span>Project Type</span>
+                        <select name="project_type" required>
+                            <option value="" disabled selected>Select project type</option>
+                            <option value="UI/UX Design">UI/UX Design</option>
+                            <option value="Frontend Development">Frontend Development</option>
+                            <option value="Landing Page">Landing Page</option>
+                            <option value="Full Website / Web App">Full Website / Web App</option>
+                            <option value="Branding &amp; Identity">Branding &amp; Identity</option>
+                            <option value="Other / Consultation">Other / Consultation</option>
+                        </select>
                     </label>
 
                     <label>
@@ -482,6 +490,18 @@
     </div>
 
     <script src="script.js"></script>
+    <div class="success-popup-overlay" id="successPopup" aria-hidden="true">
+        <div class="success-popup-card">
+            <div class="success-popup-icon">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                    <polyline points="20 6 9 17 4 12"></polyline>
+                </svg>
+            </div>
+            <h3>Message Sent Successfully!</h3>
+            <p>Thank you for reaching out. Your message has been sent to Edmond and you will receive a response shortly.</p>
+            <button type="button" class="button primary success-popup-btn" id="closeSuccessPopup">Awesome</button>
+        </div>
+    </div>
 </body>
 
 </html>

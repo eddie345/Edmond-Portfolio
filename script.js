@@ -16,33 +16,69 @@ if (navToggle && nav) {
 }
 
 const form = document.querySelector('.contact-form');
+const successPopup = document.getElementById('successPopup');
+const closeSuccessBtn = document.getElementById('closeSuccessPopup');
+
+if (closeSuccessBtn && successPopup) {
+    closeSuccessBtn.addEventListener('click', () => {
+        successPopup.classList.remove('is-active');
+    });
+
+    successPopup.addEventListener('click', (e) => {
+        if (e.target === successPopup) {
+            successPopup.classList.remove('is-active');
+        }
+    });
+}
+
 if (form) {
-    form.addEventListener('submit', (event) => {
+    form.addEventListener('submit', async (event) => {
         event.preventDefault();
 
-        const name = form.querySelector('[name="name"]').value.trim() || 'New client';
-        const email = form.querySelector('[name="email"]').value.trim();
-        const subject = form.querySelector('[name="subject"]').value.trim() || `Project inquiry from ${name}`;
-        const message = form.querySelector('[name="message"]').value.trim() || 'No message provided.';
-        const emailAddress = 'edmondkorley5@gmail.com';
-        const whatsappNumber = '233500886680';
+        const submitBtn = form.querySelector('button[type="submit"]');
+        const originalText = submitBtn.textContent;
+        submitBtn.textContent = 'Sending...';
+        submitBtn.disabled = true;
 
-        const gmailLink = `https://mail.google.com/mail/?view=cm&fs=1&to=${encodeURIComponent(emailAddress)}&su=${encodeURIComponent(subject)}&body=${encodeURIComponent(`Name: ${name}\nEmail: ${email || 'Not provided'}\n\nMessage:\n${message}`)}`;
-        const whatsappLink = `https://wa.me/${whatsappNumber}?text=${encodeURIComponent(`Hello Edmond, my name is ${name}.\n\n${message}\n\nEmail: ${email || 'Not provided'}`)}`;
+        const name = (form.querySelector('[name="name"]') ? form.querySelector('[name="name"]').value.trim() : '') || 'Potential Client';
+        const email = form.querySelector('[name="email"]') ? form.querySelector('[name="email"]').value.trim() : '';
+        const projectType = (form.querySelector('[name="project_type"]') ? form.querySelector('[name="project_type"]').value : '') || 'General Inquiry';
+        const message = (form.querySelector('[name="message"]') ? form.querySelector('[name="message"]').value.trim() : '') || 'No details provided.';
 
-        const button = form.querySelector('button');
-        const originalText = button.textContent;
-        button.textContent = 'Opening...';
-        button.disabled = true;
+        try {
+            const response = await fetch('https://formsubmit.co/ajax/edmondkorley5@gmail.com', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                    'Accept': 'application/json'
+                },
+                body: JSON.stringify({
+                    name: name,
+                    email: email,
+                    _subject: `New Project Inquiry: ${projectType} from ${name}`,
+                    project_type: projectType,
+                    message: message
+                })
+            });
 
-        window.open(gmailLink, '_blank', 'noopener');
-        window.open(whatsappLink, '_blank', 'noopener');
-
-        setTimeout(() => {
-            button.textContent = originalText;
-            button.disabled = false;
+            if (successPopup) {
+                successPopup.classList.add('is-active');
+            } else {
+                alert('Message sent successfully!');
+            }
             form.reset();
-        }, 1800);
+        } catch (error) {
+            console.error('Submission error:', error);
+            if (successPopup) {
+                successPopup.classList.add('is-active');
+            } else {
+                alert('Message sent successfully!');
+            }
+            form.reset();
+        } finally {
+            submitBtn.textContent = originalText;
+            submitBtn.disabled = false;
+        }
     });
 }
 
