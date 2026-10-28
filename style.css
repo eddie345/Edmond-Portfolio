@@ -6,8 +6,8 @@
     --text: #f3efe8;
     --muted: #b4b0a7;
     --line: rgba(255, 255, 255, 0.08);
-    --accent: #f7b267;
-    --accent-strong: #ff9f43;
+    --accent: #ffd000;
+    --accent-strong: #e6b800;
     --shadow: 0 25px 60px rgba(0, 0, 0, 0.35);
     --radius: 26px;
 }
@@ -142,19 +142,22 @@ p {
     display: inline-flex;
     align-items: center;
     justify-content: center;
-    padding: 0.8rem 1.2rem;
-    border: 1px solid rgba(255, 255, 255, 0.1);
+    padding: 0.75rem 1.35rem;
+    border: 1px solid transparent;
     border-radius: 999px;
-    background: rgba(255, 255, 255, 0.02);
-    transition: background 0.2s ease, color 0.2s ease, border-color 0.2s ease, box-shadow 0.2s ease;
+    background: linear-gradient(135deg, var(--accent), var(--accent-strong));
+    color: #111;
+    font-weight: 700;
+    transition: background 0.2s ease, color 0.2s ease, border-color 0.2s ease, box-shadow 0.2s ease, transform 0.2s ease;
 }
 
 .nav-cta:hover,
 .nav-cta:focus-visible {
-    background: linear-gradient(135deg, #ffd6a2, var(--accent));
+    background: linear-gradient(135deg, #fff066, var(--accent));
     border-color: transparent;
-    color: #130d09;
-    box-shadow: none;
+    color: #111;
+    box-shadow: 0 4px 18px rgba(255, 208, 0, 0.35);
+    transform: translateY(-1px);
 }
 
 .nav-toggle {
@@ -240,15 +243,15 @@ p {
 
 .button.primary {
     background: linear-gradient(135deg, var(--accent), var(--accent-strong));
-    color: #1a120a;
+    color: #111;
     box-shadow: none;
 }
 
 .button.primary:hover,
 .button.primary:focus-visible {
-    background: linear-gradient(135deg, #ffd6a2, var(--accent));
+    background: linear-gradient(135deg, #fff066, var(--accent));
     box-shadow: none;
-    color: #130d09;
+    color: #111;
 }
 
 .button.secondary {
@@ -260,9 +263,9 @@ p {
 
 .button.secondary:hover,
 .button.secondary:focus-visible {
-    background: linear-gradient(135deg, #ffd6a2, var(--accent));
+    background: linear-gradient(135deg, #fff066, var(--accent));
     border-color: transparent;
-    color: #130d09;
+    color: #111;
     box-shadow: none;
 }
 
@@ -310,7 +313,7 @@ p {
     padding: 1.2rem;
     display: grid;
     place-items: center;
-    background: linear-gradient(135deg, rgba(115, 87, 255, 0.28), rgba(38, 202, 181, 0.18), rgba(255, 184, 77, 0.18));
+    background: linear-gradient(135deg, rgba(115, 87, 255, 0.28), rgba(38, 202, 181, 0.18), rgba(255, 208, 0, 0.22));
     border: 1px solid rgba(255, 255, 255, 0.12);
     border-radius: 32% 68% 58% 42% / 36% 33% 67% 64%;
     box-shadow: var(--shadow);
@@ -356,6 +359,7 @@ p {
     border: 3px solid rgba(255, 255, 255, 0.12);
     filter: saturate(1.08) contrast(1.04) brightness(1.02);
     box-shadow: 0 20px 40px rgba(7, 12, 18, 0.28);
+    transform: scaleX(-1);
 }
 
 @keyframes pulseGlow {
@@ -509,7 +513,7 @@ p {
 
 .project-card:hover {
     transform: translateY(-4px);
-    border-color: rgba(247, 178, 103, 0.3);
+    border-color: rgba(255, 208, 0, 0.35);
     box-shadow: 0 22px 48px rgba(0, 0, 0, 0.26);
 }
 
@@ -1314,7 +1318,7 @@ body.modal-open {
     border: none;
     border-radius: 50%;
     background: linear-gradient(135deg, var(--accent), var(--accent-strong));
-    color: #1a120a;
+    color: #111;
     font-size: 1.65rem;
     font-weight: 800;
     display: inline-flex;
