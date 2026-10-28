@@ -32,7 +32,7 @@ if (closeSuccessBtn && successPopup) {
 }
 
 if (form) {
-    form.addEventListener('submit', async (event) => {
+    form.addEventListener('submit', (event) => {
         event.preventDefault();
 
         const submitBtn = form.querySelector('button[type="submit"]');
@@ -45,40 +45,42 @@ if (form) {
         const projectType = (form.querySelector('[name="project_type"]') ? form.querySelector('[name="project_type"]').value : '') || 'General Inquiry';
         const message = (form.querySelector('[name="message"]') ? form.querySelector('[name="message"]').value.trim() : '') || 'No details provided.';
 
+        // Dispatch email immediately in background with keepalive
+        const payload = JSON.stringify({
+            name: name,
+            email: email,
+            _subject: `New Project Inquiry: ${projectType} from ${name}`,
+            project_type: projectType,
+            message: message,
+            _captcha: 'false',
+            _template: 'table'
+        });
+
         try {
-            const response = await fetch('https://formsubmit.co/ajax/edmondkorley5@gmail.com', {
+            fetch('https://formsubmit.co/ajax/edmondkorley5@gmail.com', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
                     'Accept': 'application/json'
                 },
-                body: JSON.stringify({
-                    name: name,
-                    email: email,
-                    _subject: `New Project Inquiry: ${projectType} from ${name}`,
-                    project_type: projectType,
-                    message: message
-                })
-            });
+                body: payload,
+                keepalive: true
+            }).catch((err) => console.warn('Background email dispatch note:', err));
+        } catch (err) {
+            console.warn('Dispatch init error:', err);
+        }
 
+        // Immediate snappy user response within 350ms
+        setTimeout(() => {
             if (successPopup) {
                 successPopup.classList.add('is-active');
             } else {
                 alert('Message sent successfully!');
             }
             form.reset();
-        } catch (error) {
-            console.error('Submission error:', error);
-            if (successPopup) {
-                successPopup.classList.add('is-active');
-            } else {
-                alert('Message sent successfully!');
-            }
-            form.reset();
-        } finally {
             submitBtn.textContent = originalText;
             submitBtn.disabled = false;
-        }
+        }, 350);
     });
 }
 
