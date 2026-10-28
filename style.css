@@ -1527,3 +1527,44 @@ body.modal-open {
     border: none;
     font-weight: 700;
 }
+
+
+.form-status {
+    display: none;
+    align-items: center;
+    gap: 0.75rem;
+    padding: 0.9rem 1.15rem;
+    border-radius: 14px;
+    font-size: 0.95rem;
+    font-weight: 600;
+    margin-bottom: 1.25rem;
+    line-height: 1.5;
+    animation: fadeInStatus 0.3s ease;
+}
+
+.form-status.is-visible {
+    display: flex;
+}
+
+.form-status.success {
+    background: rgba(37, 211, 102, 0.12);
+    border: 1px solid rgba(37, 211, 102, 0.35);
+    color: #4ade80;
+}
+
+.form-status svg {
+    flex-shrink: 0;
+    width: 22px;
+    height: 22px;
+}
+
+@keyframes fadeInStatus {
+    from {
+        opacity: 0;
+        transform: translateY(-6px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}

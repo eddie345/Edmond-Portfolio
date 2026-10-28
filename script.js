@@ -16,36 +16,26 @@ if (navToggle && nav) {
 }
 
 const form = document.querySelector('.contact-form');
-const successPopup = document.getElementById('successPopup');
-const closeSuccessBtn = document.getElementById('closeSuccessPopup');
-
-if (closeSuccessBtn && successPopup) {
-    closeSuccessBtn.addEventListener('click', () => {
-        successPopup.classList.remove('is-active');
-    });
-
-    successPopup.addEventListener('click', (e) => {
-        if (e.target === successPopup) {
-            successPopup.classList.remove('is-active');
-        }
-    });
-}
 
 if (form) {
+    const statusBox = form.querySelector('#formStatus') || document.getElementById('formStatus');
+
     form.addEventListener('submit', (event) => {
         event.preventDefault();
 
         const submitBtn = form.querySelector('button[type="submit"]');
-        const originalText = submitBtn.textContent;
-        submitBtn.textContent = 'Sending...';
-        submitBtn.disabled = true;
+        const originalText = submitBtn ? submitBtn.textContent : 'Send message';
+        if (submitBtn) {
+            submitBtn.textContent = 'Sending...';
+            submitBtn.disabled = true;
+        }
 
         const name = (form.querySelector('[name="name"]') ? form.querySelector('[name="name"]').value.trim() : '') || 'Potential Client';
         const email = form.querySelector('[name="email"]') ? form.querySelector('[name="email"]').value.trim() : '';
         const projectType = (form.querySelector('[name="project_type"]') ? form.querySelector('[name="project_type"]').value : '') || 'General Inquiry';
         const message = (form.querySelector('[name="message"]') ? form.querySelector('[name="message"]').value.trim() : '') || 'No details provided.';
 
-        // Dispatch email immediately in background with keepalive
+        // Background AJAX dispatch to FormSubmit
         const payload = JSON.stringify({
             name: name,
             email: email,
@@ -70,17 +60,31 @@ if (form) {
             console.warn('Dispatch init error:', err);
         }
 
-        // Immediate snappy user response within 350ms
+        // Inline AJAX notification response
         setTimeout(() => {
-            if (successPopup) {
-                successPopup.classList.add('is-active');
-            } else {
-                alert('Message sent successfully!');
+            if (statusBox) {
+                statusBox.className = 'form-status success is-visible';
+                statusBox.innerHTML = `
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                        <polyline points="20 6 9 17 4 12"></polyline>
+                    </svg>
+                    <span>Message sent successfully! Thank you for reaching out, I\'ll get back to you shortly.</span>
+                `;
             }
+
             form.reset();
-            submitBtn.textContent = originalText;
-            submitBtn.disabled = false;
-        }, 350);
+            if (submitBtn) {
+                submitBtn.textContent = originalText;
+                submitBtn.disabled = false;
+            }
+
+            // Automatically hide the inline notification after 8 seconds
+            setTimeout(() => {
+                if (statusBox) {
+                    statusBox.classList.remove('is-visible');
+                }
+            }, 8000);
+        }, 300);
     });
 }
 

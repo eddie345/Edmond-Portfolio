@@ -12,7 +12,7 @@
     <link
         href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&family=Playfair+Display:wght@600;700&display=swap"
         rel="stylesheet" />
-    <link rel="stylesheet" href="style.css?v=3" />
+    <link rel="stylesheet" href="style.css?v=4" />
 </head>
 
 <body>
@@ -434,6 +434,8 @@
                         <textarea name="message" rows="5" placeholder="Tell me more about your project"></textarea>
                     </label>
 
+                    <div class="form-status" id="formStatus" role="status" aria-live="polite"></div>
+
                     <button type="submit" class="button primary">Send message</button>
                 </form>
             </div>
@@ -487,19 +489,8 @@
         </div>
     </div>
 
-    <script src="script.js?v=3"></script>
-    <div class="success-popup-overlay" id="successPopup" aria-hidden="true">
-        <div class="success-popup-card">
-            <div class="success-popup-icon">
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
-                    <polyline points="20 6 9 17 4 12"></polyline>
-                </svg>
-            </div>
-            <h3>Message Sent Successfully!</h3>
-            <p>Thank you for reaching out. Your message has been sent to Edmond and you will receive a response shortly.</p>
-            <button type="button" class="button primary success-popup-btn" id="closeSuccessPopup">Awesome</button>
-        </div>
-    </div>
+    <script src="script.js?v=4"></script>
+    
 </body>
 
 </html>
